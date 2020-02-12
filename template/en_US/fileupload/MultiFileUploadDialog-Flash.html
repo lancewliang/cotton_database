@@ -1,0 +1,182 @@
+<!--fw type=class name=global.fileupload.page.MultiFileUploadDialog fw-->
+<HTML>
+<HEAD>
+<TITLE>-|File Upload|-</TITLE>
+<!--fw type=access value=0 fw-->
+<SCRIPT type="text/javascript">
+var v_upload_Servlet_URI = "/mfud_ulss";
+var isDebug = false;
+</SCRIPT>
+<fw:template name="NavBackground" path="report" isInline="true" />
+<LINK id="ccStyleSheet" REL="STYLESHEET" TYPE="text/css" HREF="css/tool/fileupload/MultiFileUpload.css">
+<SCRIPT type="text/javascript" src="js/tool/fileupload/mfud/swfobject.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/tool/fileupload/MultiFileUploadDialog-co.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/tool/fileupload/MultiFileUploadDialog-flash.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="js/tool/fileupload/MultiFileUploadDialog-co-i18n.js"></SCRIPT>
+<SCRIPT type="text/javascript">
+var lang = "en_US";
+var resURL = "/js/tool/fileupload/mfud/res/lang_"+lang+".xml";
+swfobject.embedSWF("/js/tool/fileupload/mfud/CCFileUploader.swf?v=11.0.6", "CCFileUploader", "75", "24", "10.0.0", "/js/tool/fileupload/mfud/playerProductInstall.swf", 
+{ 
+  campusId:1,
+  userId:`userId`,
+  isSV:"`isSV`",
+  ppfx:"`ppfx`", 
+  max_allowed_size:`allowableTotalSize`,
+  type:'all', 
+  locale:lang,
+  hostname:"`host`",
+  is_debug: false,
+  res_url:resURL,
+  upload_Servlet_URI:v_upload_Servlet_URI,
+  conf_url:'/js/tool/fileupload/mfud/CCFileUploader_config.xml?v=11.0.6'
+}); 
+</SCRIPT>
+<SCRIPT type="text/javascript">
+function getDefaultView(){return "`defaultView`";}
+function getCurrentView(){return "`currentView`";}
+var fileListformObj = null;
+<!--fw type=if name=init condition=initFileContent!= defaultValue= fw-->
+  fileinfolist = `initFileContent`;
+<!--fw type=if name=init fw-->
+</SCRIPT>
+<style type="text/css">
+body {
+	background-color: #fff;
+}
+
+.ccViewSepLine {
+	background: #fff;
+	width: 350px;
+	height: 130px;
+	margin: 0 auto;
+	padding-top: 40px;
+}
+
+.tlUploadTable {
+	border-collapse: collapse;
+	border: 1px solid #bbb;
+	width: 100%;
+}
+
+.tlUploadTable td {
+	border-right: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+	padding: 5px;
+}
+
+#debugMsg {
+	display: none;
+}
+
+.ccBold {
+	color: #666;
+	padding-bottom: 5px;
+}
+
+.tlBtnDiv {
+	background: #e7e7e7;
+	padding: 10px 0;
+	width: 100%;
+}
+
+.tlUploadDiv {
+	clear: both;
+	margin: 0 auto;
+	width: 150px;
+}
+
+.ccOutline {
+	margin: 10px auto;
+}
+
+.tccLine {
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+	margin-bottom: 1px;
+}
+
+.ccBtn {
+	-moz-transition: all 0.1s ease-out 0s;
+	background-color: #F4F4F4;
+	background-image: -moz-linear-gradient(center top, #FFFFFF, #F4F4F4);
+	background: -webkit-linear-gradient(top, #FFFFFF, #F4F4F4);
+	border-bottom: 1px solid #bbbbbb;
+	border-radius: 3px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	color: #313131;
+	padding: 5px 8px 6px;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</HEAD>
+<BODY>
+
+  <div CLASS="ccViewSepLine">
+    <div class="ccGap">
+      <div CLASS="ccErr" ID="ShowMsgDIV"></div>
+    </div>
+    <div id="suppendUploadMainDIV" class="ccMsg tlhidden" align="center">
+      -|You have uploaded the maximum number of files allowed for this function. Press "Done" to continue.|- <br> <br>
+    </div>
+    <div align="center" id="uploadMainDIV">
+      <div class="ccBold">-|To begin upload, click browse button to select one or more files.|-</div>
+
+    </div>
+    <div id="FlashLoadingMsg" class="ccMsg" align="center">-|Loading Flash|-.</div>
+    <div class="ccL" align="center">
+      <span id="CCFileUploader"></span>
+    </div>
+    <div id="obj_div" class="tlHidden"></div>
+  </div>
+
+  <FORM NAME="attachment_list" ACTION="PageServlet?" METHOD="POST">
+    <!-- output variable -->
+    <INPUT TYPE="HIDDEN" NAME="ppfx" VALUE="`ppfx`"> <INPUT TYPE="HIDDEN" NAME="cmd" VALUE=""> <INPUT TYPE="HIDDEN" NAME="mf" VALUE="`showMyFiles`">
+    <INPUT TYPE="HIDDEN" NAME="allowableTotalSize" VALUE="`allowableTotalSize`"> <INPUT TYPE="HIDDEN" NAME="maxCount" VALUE="`maxCount`"> <INPUT
+      TYPE="HIDDEN" NAME="allowConvert" VALUE="`allowConvert`"> <INPUT TYPE="HIDDEN" NAME="viewConversionExt" VALUE="`viewConversionExt`"> <INPUT
+      TYPE="HIDDEN" NAME="videoConversionExt" VALUE="`videoConversionExt`">
+    <div class="tccLine" style="color: #f00; font-size: 12px; display: none; text-align: center" id="uploadFileInfo_nodata">-|No files have been selected.|-</DIV>
+    <DIV style="display: none; height: 178px; overflow-y: auto" ID="uploadFileInfo">
+      <table class="tlUploadTable">
+        <tbody id="filelist"></tbody>
+      </TABLE>
+    </DIV>
+    <div class="tlBtnDiv">
+      <p class="tlUploadDiv">
+        <input type="button" ID="done" NAME="done" VALUE="-|Done|-" CLASS="ccBtn" onClick="dismiss();"> &nbsp;&nbsp; <input type="button" ID="cancel" NAME="cancel"
+          VALUE="-|Cancel|-" CLASS="ccBtn" onClick="closeuploadwindow()">
+      </p>
+    </div>
+
+  </FORM>
+
+  <DIV id="debugMsg" STYLE="height: 1px; overflow-y: auto">log</DIV>
+  <SCRIPT type="text/javascript">
+
+fileListformObj = document.attachment_list;
+if (!window.console) console = {};
+console.log = console.log || function(){};
+var debugMsg = $("#debugMsg");
+var flashLoadingMsg = $("#FlashLoadingMsg");
+if (isDebug) { 
+  debugMsg.css("height","28px");
+  debugMsg.show();
+}
+function debug(msg){
+  if (isDebug) {
+    debugMsg.html(debugMsg.html() + msg + "<br>");
+  }else{
+    console.log(msg);
+  }
+} 
+function doStartRefreshInfo(){
+  flashLoadingMsg.hide();
+  uploadFileOnLoad();
+  parseInitFileContent();
+}
+function startRefreshInfo(){setTimeout(function(){doStartRefreshInfo();},1000);}
+</SCRIPT>
+
+</BODY>
+</HTML>

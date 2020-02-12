@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TCC StarRating Test</title>
+<link rel="stylesheet" type="text/css" href="../css/tccWidget-starRating.css" />
+<script src="../libs/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../js/tccCommon-jquery.js" type="text/javascript"></script>
+<script src="../js/tccWidgetBase.js" type="text/javascript"></script>
+<script src="../js/tccWidget-starRating.js" type="text/javascript"></script>
+</head>
+<body id="ccbody">
+  <div id="test"></div>
+  <div id="test2"></div>
+  <script type="text/javascript">
+      TCC.ready("#ccbody", function() {
+        TCC.find("#test").starRating({
+          starCount:5,
+          rating : 12,
+          starMargin:6,
+          selectedFn : function(rating) {
+            alert(rating);
+          }
+        });
+      });
+    </script>
+</body>
+</html>

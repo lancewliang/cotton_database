@@ -1,0 +1,42 @@
+<div style="width: 400px; margin-left: -150px; z-index: 350;" id="editExpCol" class="tccWidget-popin">
+  <span data-dismiss="popin" class="tccWidget-popin-closeIcon"></span>
+  <div class="tccWidget-popin-header">
+    <div class="tccWidget-popin-header-text"></div>
+  </div>
+  <div class="tccWidget-popin-body">
+    <FORM name="editExpCol_form" onsubmit="return false;">
+      <table>
+        <tr>
+          <td>列坐标:</td>
+          <td><select name="col">
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="H">H</option>
+              <option value="I">I</option>
+              <option value="J">J</option>
+              <option value="K">K</option>
+              <option value="L">L</option>
+              <option value="M">M</option>
+              <option value="N">N</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td>字段名称:</td>
+          <td><input name="label" type="text"></td>
+        </tr>
+        <tr>
+          <td>表达式:</td>
+          <td><input name="expression" type="text"></td>
+        </tr>
+      </table>
+
+    </FORM>
+  </div>
+  <div class="tccWidget-popin-footer">
+    <button type="button" data-dismiss="popin" class="saveBtn tlBtn" onclick="addExpCol(document.editExpCol_form)">保存</button>
+    <button type="button" data-dismiss="popin" class="closeBtn tlBtn">关闭</button>
+  </div>
+</div>

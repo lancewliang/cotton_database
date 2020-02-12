@@ -1,0 +1,81 @@
+<!--fw type=class name=ant.server.page.ListReportFormat fw-->
+<html>
+<head>
+<META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=UTF-8'>
+
+<script src="js/ccSelect.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/tool/fileupload/ttmMfud.js"></script>
+<fw:template name="NavBackground" path="report" isInline="true" />
+<fw:template name="constants-js" path="report" isInline="true" />
+<fw:template name="css-l" path="report" isInline="true" />
+</head>
+<body>
+
+  <form name="form">
+    <button type="button" name="n" onclick="postRequest('');">刷新</button>
+
+
+    <div id="tasksDIV"></div>
+  </form>
+  <script>
+      function doFeedByName(name) {
+        postRequest("&cmd=doAnt&name=" + name);
+      }
+
+      function postRequest(param) {
+        var url = "/ePage?pg=ListAntFeed-Data" + param;
+        var call = function(response) {
+          TCC.find("#tasksDIV").html(response);
+        }
+        TCC.post(url, null, true, call, "html");
+      }
+
+      function reload() {
+        postRequest('');
+        setTimeout(function() {
+          reload();
+        }, 20000);
+      }
+      reload();
+    </script>
+
+
+  <UL>
+    <li>印度纺织厂消费月报</li>
+    <li>印度MCX期货价格</li>
+    <li>印度月库存</li>
+    <li>印度现货价格</li>
+    <li>印度产量进度最后日报</li>
+    <li>印度进出口最后月</li>
+  </UL>
+  <UL>
+    <li>巴基斯坦产销进度半月报</li>
+    <li>巴基斯坦进出口</li>
+    <li>巴基斯坦现货均价价格</li>
+    <li>巴基斯坦港口价格</li>
+  </UL>
+  <UL>
+    <li>中国棉花产销进度周报</li>
+    <li>政府收储抛出日报</li>
+    <li>中国郑州交易所 期货价格</li>
+    <li>中国月库存</li>
+    <li>中国进出口</li>
+    <li>中国主港口价格</li>
+    <li>中国CCINDEX价格指数</li>
+    <li>中国月周转库存</li>
+
+  </UL>
+  <UL>
+    <li>巴西现货价格指数</li>
+  </UL>
+  <UL>
+    <li>美国棉花扎花进度半月报</li>
+    <li>美国棉花出口周报</li>
+    <li>美国纺织厂消费月报</li>
+    <li>美国ICE期货价格</li>
+    <li>美国7大市场现货价格</li>
+  </UL>
+  <div>Cotlook棉花价格指数</div>
+  <div>天气</div>
+</body>
+</html>

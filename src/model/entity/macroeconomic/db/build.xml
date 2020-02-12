@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE project [
+    <!ENTITY env SYSTEM "../../../../env.xml">
+    <!ENTITY env_local SYSTEM "../../../../env_local.xml">
+]>
+
+<project name="model/entity/macroeconomic/db" default="compile">
+
+  &env_local;
+  &env;
+
+  <target name="compile" depends="init">
+     
+    <javac debug="true" classpath="${EXTRALIBS}"
+      includes="
+model/entity/macroeconomic/db/CountryMainIndexSQL.java
+"
+      srcdir="${SRC_DIR}"
+      destdir="${INSTALLDIR}"/>
+  </target>
+   
+
+<ant dir="base" target="compile"/>
+</project>

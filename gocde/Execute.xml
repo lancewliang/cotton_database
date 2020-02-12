@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<targetRoot>D:/codegode</targetRoot>
+	<generateDB>true</generateDB>
+	<generateJava>true</generateJava>
+	<generateDom>false</generateDom>
+	<moduleName>rest</moduleName>
+	<dbType>mysql</dbType>
+	<file>restaurant.obj.Restaurant</file>
+	<file>restaurant.obj.RestaurantRecord</file>
+</root>

@@ -1,0 +1,4 @@
+LIBRARY  "Test2" 
+ 
+EXPORTS
+	GetPlus

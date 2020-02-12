@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE project [
+    <!ENTITY env SYSTEM "../../../../../../env.xml">
+    <!ENTITY env_local SYSTEM "../../../../../../env_local.xml">
+]>
+
+<project name="model/entity/price/country/db/base" default="compile">
+
+  &env_local;
+  &env;
+
+  <target name="compile" depends="init">
+     
+    <javac debug="true" classpath="${EXTRALIBS}"
+      includes="model/entity/price/country/db/base/Base_FuturePriceDaySQL.java
+model/entity/price/country/db/base/Base_ExchangeRateDaySQL.java
+model/entity/price/country/db/base/Base_FreightDaySQL.java
+model/entity/price/country/db/base/Base_SpotPriceDaySQL.java"
+      srcdir="${SRC_DIR}"
+      destdir="${INSTALLDIR}"/>
+  </target>
+   
+</project>

@@ -1,0 +1,93 @@
+<!--fw type=class name=export.mapping.page.CreateReportFormatS2 fw-->
+<html>
+<head>
+<META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=UTF-8'>
+ 
+<script src="js/ccSelect.js" type="text/javascript"></script>
+<fw:template name="constants-js" path="report" isInline="true" />
+<fw:template name="CreateReportFormat-js" path="report/format" isInline="true" />
+<fw:template name="NavBackground" path="report" isInline="true" />
+
+</head>
+<body>
+  <FORM name="form">
+
+    <div>
+      报表
+      <div>报表所属：`reportType`</div>
+      <div>报表名称: `reportLabel`</div>
+      <div>时间维度:`time_dimension` 时间范围:`reportStartDate` - `reportEndDate`</div>
+      <div>商品:`commodity_dimension`</div>
+      <div>国家:`country_dimension`</div>
+    </div>
+    <hr>
+    <div>
+      计量单位
+      <div>
+        重量:<select name="WeightUnit"></select>
+      </div>
+      <div>
+        长度:<select name="LengthUnit"></select>
+      </div>
+    </div>
+    <hr>
+    <div>
+      <button type="button" name="n" onclick="showDBCol();">添加表字段</button>
+      <button type="button" name="n" onclick="showExpCol();">添加表达式</button>
+      <hr>
+    </div>
+  </FORM>
+
+  <SCRIPT>
+      fieldMappingData.selector = {
+
+        getTimeDimensionObj : function(time_dimension) {
+          var ret;
+          TCC.each(models, function(idx, o) {
+            if (o.time_dimension == time_dimension) {
+              ret = o;
+            }
+          });
+          return ret;
+        },
+        getModelObjs : function(time_dimension) {
+          var timeObj = this.getTimeDimensionObj(time_dimension);
+          var modelObjs = timeObj.model;
+          return modelObjs;
+
+        },
+        getModelObj : function(time_dimension, model_class) {
+          var modelObjs = this.getModelObjs(time_dimension);
+          var modelObj = null;
+          TCC.each(modelObjs, function(idx, o) {
+            if (o.model_class == model_class) {
+              modelObj = o;
+            }
+          });
+          return modelObj;
+        },
+        getFieldObjs : function(time_dimension, model_class) {
+          var modelObjs = this.getModelObjs(time_dimension);
+          var fieldObjs = null;
+          TCC.each(modelObjs, function(idx, o) {
+            if (o.model_class == model_class) {
+              fieldObjs = o.field;
+            }
+          });
+          return fieldObjs;
+        }
+      };
+      var models = fieldMappingData.root.models;
+
+      TCC.each(WeightUnit.properties.root.obj, function(idx, o) {
+        ccAddOption(document.form.WeightUnit, o.label, o.label);
+      });
+      TCC.each(LengthUnit.properties.root.obj, function(idx, o) {
+        ccAddOption(document.form.LengthUnit, o.label, o.label);
+      });
+    </SCRIPT>
+  <fw:template name="CreateReportFormat-ColTable" path="report/format" isInline="true" />
+  <fw:template name="EditReportExpressCol-popin" path="report/format" isInline="true" />
+  <fw:template name="EditReportDBCol-popin" path="report/format" isInline="true" />
+</body>
+</html>

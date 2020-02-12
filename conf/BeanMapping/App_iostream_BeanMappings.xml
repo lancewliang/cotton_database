@@ -1,0 +1,3 @@
+<beans>
+  <bean id="UploadHelper" class="global.fileupload.page.UploadHelperImp"/>
+</beans> 

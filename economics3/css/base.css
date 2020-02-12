@@ -1,0 +1,185 @@
+@charset "utf-8";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", "Lucida Grande", Arial, Helvetica,
+    sans-serif;
+  font-size: 12px;
+  /*  line-height: 20px;*/
+  color: #333333;
+  background: #f5f5f5;
+}
+
+.hand {
+  cursor: pointer;
+}
+
+fieldset,img {
+  border: 0;
+}
+
+input {
+  height: 20px;
+}
+
+input,textarea {
+  border: 1px solid #bbb;
+  outline-style: none;
+}
+
+input[type="text"],input[type="password"],textarea {
+  outline-style: none;
+  -webkit-appearance: none;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+  vertical-align: top;
+}
+
+.tlDisplay {
+  display: block;
+}
+
+.tlBlock {
+  display: inline-block;
+}
+
+.tlFl {
+  float: left;
+}
+
+.tlFr {
+  float: right;
+}
+
+.tlTextRight {
+  text-align: right;
+}
+
+.tlTextColor1 {
+  color: #FF7F27;
+}
+
+h2,.tlF14b {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+h1,.tlF16b {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.tlF14 {
+  font-size: 14px;
+}
+
+.tlF14b {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.tlF16 {
+  font-size: 16px;
+}
+
+.tlF16b {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.tlF12 {
+  font-size: 12px;
+}
+
+.tlF12b {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tlF20 {
+  font-size: 20px;
+}
+
+.tlF24b {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.tlF27b {
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.tlF50b {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.tlFGray {
+  color: #7f7f7f;
+}
+
+.tlClear {
+  clear: both;
+}
+
+.tlOrangeBtn {
+  border: 1px solid #1b6ca4;
+  border-radius: 1px;
+  background: #3887bf; 
+ /*  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#83ca41',
+    endColorstr='#83ca41');  */
+ /*  background: -webkit-gradient(linear, left top, left bottom, from(#83ca41),
+    to(#83ca41));
+  background: -moz-linear-gradient(top, #83ca41, #83ca41); */
+  cursor: pointer;
+  display: inline-block;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.tlOrangeBtn:hover {
+  background: #77ba38;
+  text-decoration: none;
+  color: #fff;
+}
+
+.tlPadding {
+  padding: 5px;
+}
+
+
+.ccHidden {
+  display: none !important;
+}
+.tlImportantHidden {
+  display: none !important;
+}
+
+.show-grid {
+  margin-bottom: 15px;
+}
+/* .show-grid [class^="col-"] {
+  padding-top: 10px;
+  padding-bottom: 10px;
+} */
+
+.reset-box-sizing,
+.reset-box-sizing *,
+.reset-box-sizing *:before,
+.reset-box-sizing *:after {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}

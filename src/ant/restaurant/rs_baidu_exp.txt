@@ -1,0 +1,162 @@
+{
+                "end_time": "",
+                "average_service_score": 0,
+                "comment_service_num": 0,
+                "average_dish_score": 0,
+                "comment_dish_num": 0,
+                "supplier_id": "",
+                "bussiness_status_reason": "",
+                "delivery_regions": "",
+                "takeout_deliver_regions_type": "",
+                "origial_region_type": "",
+                "release_id": "1444368285",
+                "is_online": 1,
+                "saled": 381,                   当前销售量
+                "advance_need_order_day": 0,
+                "sort": 0,
+                "is_collected": false,
+                "activity_ids": [
+                    "10201607282213600",
+                    "535237"
+                ],
+                "front_logistics_text": "百度专送",
+                "front_logistics_type": "baidulogistics",
+                "welfare_info": [
+                    {
+                        "type": "pay",
+                        "msg": "支持在线支付"
+                    },
+                    {
+                        "aid": "535237",
+                        "start_time": "1467204041",
+                        "end_time": "1483200000",
+                        "adesc": "更多优惠活动等你来~~",
+                        "type": "xin",
+                        "msg": "(手机app专享)新用户在线支付立减6元，使用百度钱包立减16元",
+                        "app_zhuanxiang": 0
+                    },
+                    {
+                        "aid": "10201607282213600",
+                        "start_time": 1469715131,
+                        "end_time": 1472659199,
+                        "type": "jian",
+                        "msg": "(手机app专享)满25元减7元,满35元减9元,满60元减13元",
+                        "adesc": "更多优惠活动等你来~~",
+                        "smart": "1",
+                        "available_times": [
+                            {
+                                "start_time": "00:00:00",
+                                "end_time": "23:59:59",
+                                "available_day": "0,1,2,3,4,5,6",
+                                "msg": "满25元减7元,满35元减9元,满60元减13元",
+                                "discount_rate": 28
+                            }
+                        ],
+                        "msg_origin": "满25元减7元,满35元减9元,满60元减13元",
+                        "app_zhuanxiang": 0
+                    },
+                    {
+                        "type": "certification",
+                        "msg": "资质证照"
+                    },
+                    {
+                        "type": "overtimepayment",
+                        "msg": "支持超时赔付"
+                    }
+                ],
+                "welfare_basic_info": [
+                    {
+                        "type": "bright_kitchen",
+                        "msg": "商户实景"
+                    },
+                    {
+                        "type": "certification",
+                        "msg": "资质证照"
+                    },
+                    {
+                        "type": "pay",
+                        "msg": "支持在线支付"
+                    }
+                ],
+                "welfare_act_info": [
+                    {
+                        "aid": "535237",
+                        "start_time": "1467204041",
+                        "end_time": "1483200000",
+                        "adesc": "更多优惠活动等你来~~",
+                        "type": "xin",
+                        "msg": "(手机app专享)新用户在线支付立减6元，使用百度钱包立减16元",
+                        "app_zhuanxiang": 0
+                    },
+                    {
+                        "aid": "10201607282213600",
+                        "start_time": 1469715131,
+                        "end_time": 1472659199,
+                        "type": "jian",
+                        "msg": "(手机app专享)满25元减7元,满35元减9元,满60元减13元",
+                        "adesc": "更多优惠活动等你来~~",
+                        "smart": "1",
+                        "available_times": [
+                            {
+                                "start_time": "00:00:00",
+                                "end_time": "23:59:59",
+                                "available_day": "0,1,2,3,4,5,6",
+                                "msg": "满25元减7元,满35元减9元,满60元减13元",
+                                "discount_rate": 28
+                            }
+                        ],
+                        "msg_origin": "满25元减7元,满35元减9元,满60元减13元",
+                        "app_zhuanxiang": 0
+                    },
+                    {
+                        "type": "overtimepayment",
+                        "msg": "支持超时赔付"
+                    }
+                ],
+                "welfare_spe_info": [],
+                "welfare_couponamout_info": [],
+                "is_certificated": 1,
+                "discount_info": {
+                    "is_discount_send": 0,
+                    "is_discount_first_order": 1,
+                    "discount_send_show": "",
+                    "discount_first_order_show": "(手机app专享)满25元减7元,满35元减9元,满60元减13元"
+                },
+                "coupon_info": {
+                    "support_coupon": 0,
+                    "coupon_msg": ""
+                },
+                "invoice_info": {
+                    "is_support_invoice": 0,
+                    "support_invoice_show": ""
+                },
+                "bd_express": 1,
+                "shop_name": "盛记一品锅贴（共和新路）",       名字
+                "shop_announcement": "本店欢迎您下单，用餐高峰请提前下单，谢谢！",
+                "logo_url": "http://img.waimai.bdimg.com/pb/ae5afd0ca9d99596dd54a5ff79a7582afd",
+                "takeout_price": "25",               外带价格
+                "takeout_cost": "5",                 外带价格
+                "comment_num": 0,
+                "brand": "",
+                "delivery_time": "32",
+                "start_time": "",
+                "bussiness_status_text": "",
+                "distance": 1951.9868771295,
+                "bussiness_status": 3,
+                "shop_id": "1444368285",   keyid
+                "saled_month": 504,        月销售
+                "average_score": 4.7,      
+                "rank_str": "0",
+                "is_new": 0,
+                "is_recommend": 0,
+                "is_favorited": 0,
+                "shop_lng": "13521569.18",  经纬
+                "shop_lat": "3645958.95",   经纬
+                "source_name": "baidu",
+                "is_store": 0,
+                "category": "餐饮",
+                "shop_mark_pic": "",
+                "specialmarkchain": 0,
+                "category_flag": 0,
+                "top_hot_dish": []
+}

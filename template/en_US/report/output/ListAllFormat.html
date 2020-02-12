@@ -1,0 +1,84 @@
+<!--fw type=class name=export.mapping.page.ListReportFormat fw-->
+<html>
+<head>
+<META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=UTF-8'>
+ 
+<script src="js/ccSelect.js" type="text/javascript"></script>
+<link REL="STYLESHEET" TYPE="text/css" HREF="jlib/tcc/css/tccWidget-popin.css">
+<fw:template name="NavBackground" path="report" isInline="true" />
+<fw:template name="constants-js" path="report" isInline="true" />
+
+<fw:template name="css-l" path="report" isInline="true" />
+
+</head>
+<body>
+  <form name="form">
+
+    <!--fw type=if name=isDatafeed condition=isDatafeed=true defaultValue=0 fw-->
+    <div>正在执行数据导入，稍后生成报表!!!生成数据可能不准确</div>
+    <!--fw type=if name=isDatafeed fw-->
+
+
+    <div>
+      商品: <select name="commodity" onchange="changeCommodity()">
+        <option value="">请选择</option>
+        <option value="通用">通用</option>
+        <option value="棉花">棉花</option>
+      </select> <a href="#" onclick="newReportFormat()">添加特定商品的报表格式</a>
+    </div>
+    <button type="button" name="n" onclick="postRequest('');">刷新</button>
+    <button type="button" name="n" onclick="updateReport('ALLREPORT','ALLREPORT')">生成最新报表</button>
+    <button type="button" name="n" onclick="clearReport('ALLREPORT')">清除所有报表</button>
+
+
+    <div id="formatsDIV"></div>
+  </form>
+  <script>
+      function newReportFormat() {
+        var selectCommondity = ccGetSelectedOption(document.form.commodity).value;
+
+        if (selectCommondity != '') {
+          var url = "ePage?pg=CreateReportFormat-step1&reportType=" + selectCommondity;
+          var w = window.open(url, 'user_dir', "width=800,height=600,scrollbars=yes,status=yes");
+          w.focus();
+        } else {
+          alert("请选择商品");
+        }
+
+      }
+      function postRequest(param) {
+        var url = "/ePage?pg=ListAllFormat-Data" + param;
+        var selectCommondity = ccGetSelectedOption(document.form.commodity).value;
+        if (selectCommondity != '') {
+          url += "&commodity=" + selectCommondity;
+          var call = function(response) {
+            TCC.find("#formatsDIV").html(response);
+          }
+          TCC.post(url, null, true, call, "html");
+        } else {
+          alert("请选择商品");
+        }
+
+      }
+      function changeCommodity() {
+        postRequest("");
+      }
+      function updateReport(type, scope) {
+        postRequest("&cmd=updateReport&type=" + type + "&scope=" + scope);
+      }
+      function deleteReportFormat(type, scope) {
+        postRequest("&cmd=deleteReportFormat&type=" + type + "&scope=" + scope);
+      }
+      function clearReport(scope) {
+        postRequest("&cmd=clearReport&scope=" + scope);
+      }
+      function reload() {
+        postRequest('');
+        setTimeout(function() {
+          reload();
+        }, 20000);
+      }
+      reload();
+    </script>
+</body>
+</html>

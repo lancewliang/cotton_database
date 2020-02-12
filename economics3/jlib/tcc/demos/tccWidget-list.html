@@ -1,0 +1,43 @@
+<html>
+<head>
+<script src="../libs/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../js/tccCommon-jquery.js" type="text/javascript"></script>
+<script src="../js/tccWidgetBase.js" type="text/javascript"></script>
+<script src="../js/tccWidget-list.js" type="text/javascript"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../css/tccWidget-list.css">
+</head>
+<body id="ccbody">
+  <a id="test" href="#">List test</a>
+<hr>
+<input type="button" value="expand" onclick="expand()"/>&nbsp;&nbsp;
+<input type="button" value="collapse" onclick="collapse()"/>&nbsp;&nbsp;
+<input type="button" value="destroy" onclick="destroy()"/>
+  <script type="text/javascript">
+  (function() {
+    TCC.ready("#ccbody", function() {
+      TCC.find("#test").list({
+        id:"test",
+        listContent: ["111","22222"],
+        position:{top:100,left:50},
+        width:500,
+        callBackFn: function(index){
+          console.log(index);
+        }
+      });
+    });
+  })();
+  
+  function expand(){
+    TCC.find("#test").list("expand");
+  }
+  function collapse(){
+    TCC.find("#test").list("collapse");
+  }
+  function destroy(){
+    TCC.find("#test").list("collapse");
+  }
+  
+  
+  </script>
+</body>
+</html>

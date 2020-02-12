@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><LABELS>
+<LABEL key="File Upload" ts="2012-05-14_06:31_GMT">
+<BUNDLE>File Upload</BUNDLE>
+</LABEL>
+<LABEL key="You have uploade" ts="2012-05-14_06:31_GMT">
+<BUNDLE>You have uploaded the maximum number of files allowed for this function. Press "Done" to continue.</BUNDLE>
+</LABEL>
+<LABEL key="To begin upload," ts="2012-05-14_06:31_GMT">
+<BUNDLE>To begin upload, click browse button to select one or more files.</BUNDLE>
+</LABEL>
+<LABEL key="Loading Flash" ts="2012-05-14_06:31_GMT">
+<BUNDLE>Loading Flash</BUNDLE>
+</LABEL>
+<LABEL key="No files have be" ts="2012-05-14_06:31_GMT">
+<BUNDLE>No files have been selected.</BUNDLE>
+</LABEL>
+<LABEL key="Done" ts="2012-05-14_06:31_GMT">
+<BUNDLE>Done</BUNDLE>
+</LABEL>
+<LABEL key="Cancel" ts="2012-05-14_06:31_GMT">
+<BUNDLE>Cancel</BUNDLE>
+</LABEL>
+</LABELS>

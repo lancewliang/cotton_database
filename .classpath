@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="lib/tcclibs/tcc-template-engine.jar" sourcepath="D:/tccwork/ccfw/tcc_template_engine/javasrc"/>
+	<classpathentry kind="lib" path="lib/tcclibs/tcc-utils-apps.jar"/>
+	<classpathentry kind="lib" path="lib/tcclibs/tcc-utils.jar" sourcepath="D:/tccwork/ccfw/tcc_utils/javasrc"/>
+	<classpathentry kind="lib" path="lib/excell/poi-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="lib/excell/poi-examples-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="lib/excell/poi-excelant-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="lib/excell/poi-ooxml-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="lib/excell/poi-ooxml-schemas-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="lib/excell/poi-scratchpad-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="lib/html/html-parser.jar"/>
+	<classpathentry kind="lib" path="lib/html/htmlparser.jar"/>
+	<classpathentry kind="lib" path="lib/html/pinyin4j-1.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/common/commons-codec-1.5.jar"/>
+	<classpathentry kind="lib" path="lib/common/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/common/junit-3.8.1.jar"/>
+	<classpathentry kind="lib" path="lib/common/log4j-1.2.13.jar"/>
+	<classpathentry kind="lib" path="lib/jdbc/mysql-connector-java-5.1.19-bin.jar"/>
+	<classpathentry kind="lib" path="lib/ooxml-lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/ooxml-lib/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/ooxml-lib/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/ooxml-lib/xstream-1.4.4.jar"/>
+	<classpathentry kind="lib" path="lib/tcclibs/tcc-batch-server.jar"/>
+	<classpathentry kind="lib" path="lib/tcclibs/tcc-tools-iostream.jar" sourcepath="D:/tccwork/ccfw/tcc_apps_iostream/javasrc"/>
+	<classpathentry kind="lib" path="lib/xalan-2.7.1/serializer.jar"/>
+	<classpathentry kind="lib" path="lib/xalan-2.7.1/xalan.jar"/>
+	<classpathentry kind="lib" path="lib/xalan-2.7.1/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="lib/xalan-2.7.1/xml-apis.jar"/>
+	<classpathentry kind="lib" path="lib/xalan-2.7.1/xsltc.jar"/>
+	<classpathentry kind="lib" path="lib/ooxml-lib/xmlpull-1.1.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-2_3-fcs-classfiles.zip"/>
+	<classpathentry kind="lib" path="lib/tcclibs/tcc-account.jar"/>
+	<classpathentry kind="lib" path="lib/gnu-regexp-1.0.8.jar"/>
+	<classpathentry kind="lib" path="lib/pdf/pdfbox-app-1.8.4.jar"/>
+	<classpathentry kind="lib" path="lib/img/jai_imageio-1.1-alpha.jar"/>
+	<classpathentry kind="lib" path="lib/img/swingx-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.2.4.jar"/>
+	<classpathentry kind="output" path="economics3/WEB-INF/classes"/>
+</classpath>

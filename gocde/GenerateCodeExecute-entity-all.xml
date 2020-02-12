@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<targetRoot>D:/codegode</targetRoot>
+	<generateDB>true</generateDB>
+	<generateJava>true</generateJava>
+	<generateDom>false</generateDom>
+	<moduleName>entity</moduleName>
+	<dbType>mysql</dbType>
+
+	<file>model.entity.production.country.GrowAreaYear</file>
+	<file>model.entity.production.country.YieldYear</file>
+	<file>model.entity.production.country.YieldDay</file> 
+	<file>model.entity.production.country.AgricultureYieldWeek</file>
+	
+	
+	<file>model.entity.sale.country.SaleDay</file>
+	<file>model.entity.sale.country.SaleMonth</file>
+ 
+	<file>model.entity.consumption.ConsumptionDay</file>
+	<file>model.entity.consumption.ConsumptionYear</file>
+
+	<file>model.entity.price.country.ExchangeRateDay</file>
+	<file>model.entity.price.country.FreightDay</file>
+	<file>model.entity.price.country.FuturePriceDay</file> 
+	<file>model.entity.price.country.CountryPriceDay</file>
+	<file>model.entity.price.country.PortPriceDay</file>
+
+
+
+	<file>model.entity.stock.CycleStockMonth</file>
+	<file>model.entity.stock.BusinessStockMonth</file>
+	<file>model.entity.stock.IndustrialStockDayMonth</file>
+    <file>model.entity.stock.IndustrialStockMonth</file>
+ 
+	<file>model.entity.stock.BourseStockWeek</file>
+
+	<file>model.entity.gov.country.GovBatch</file>
+	<file>model.entity.gov.country.GovMonth</file>
+
+	<file>model.entity.custom.country.ImportTypeMonth</file>
+	<file>model.entity.custom.country.ImportExportMonth</file>
+	<file>model.entity.custom.country.ImportExportDay</file>
+</root>

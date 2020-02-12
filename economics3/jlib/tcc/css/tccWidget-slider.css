@@ -1,0 +1,39 @@
+.tccBaseSliderPrev,.tccBaseSliderNext,.tccBaseSliderWrap {
+  display: inline-block;
+}
+
+.tccBaseSliderItemWrap {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tccBaseSliderItem {
+  float: left;
+}
+
+.tccBaseSliderPrev {
+  background-image: url("../img/slider/icon-arrowhead.png");
+  width: 50px;
+  height:41px;
+  background-position:0 -116px;
+  cursor: pointer;
+  opacity:0.5;
+}
+
+.tccBaseSliderNext {
+  background-image: url("../img/slider/icon-arrowhead.png");
+  width: 50px;
+  height:41px;
+  background-position:0 -157px;
+  cursor: pointer;
+  opacity:0.5;
+}
+.tccBaseSliderPrev:hover, .tccBaseSliderNext:hover{opacity:1}
+.tccBaseSliderWrap {
+  overflow: hidden;
+}
+
+.tccBaseSliderItem{
+  margin:5px;
+}

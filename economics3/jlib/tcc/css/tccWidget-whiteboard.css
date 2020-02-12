@@ -1,0 +1,268 @@
+body {
+  -webkit-user-select: none;
+}
+
+ol,ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.whiteboard {
+  display: none;
+  position: relative;
+}
+
+.whiteboard .canvas {
+  background:#373737 !important;
+  position: relative;
+  left: 0;
+  top: 0;
+  border:1px solid #ccc;
+  border-bottom-width: 0;
+}
+
+.pencil_active {
+  cursor: url(../img/whiteboard/pencil.gif), auto;
+}
+
+.eraser_active {
+  cursor: url(../img/whiteboard/eraser.gif), auto;
+}
+
+.move_image {
+  cursor: pointer;
+}
+
+.rectangle_active {
+  cursor: crosshair;
+}
+
+.oval_active {
+  cursor: crosshair;
+}
+
+.font_active {
+  cursor: text;
+}
+
+#wb_slider {
+  width: 80px;
+  margin: 8px 10px;
+  float: left;
+}
+
+.wbToolbarWrap {
+ background-color: #EEEEEE;
+  overflow: hidden;
+}
+
+.wb_toolbar {
+  border: 1px solid #000;
+  height: 39px;
+}
+
+.wb_btn {
+  display: inline-block;
+  border-right: 1px solid #000;
+  float: left;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.wb_btn.left {
+  border-bottom: 1px solid #000;
+}
+
+.wb_icon_btn {
+  background-repeat: no-repeat;
+  width: 35px;
+  height: 33px;
+  background-position: center;
+}
+
+.wb_text_btn {
+  padding: 0 5px;
+}
+
+.wb_btn_selected {
+  background-color: #ccc;
+}
+
+.wb_btn_sketch {
+  background-image: url(../img/whiteboard/sketch.png);
+}
+
+.wb_btn_line {
+  background-image: url(../img/whiteboard/line.png);
+}
+
+.wb_btn_rectFrame {
+  background-image: url(../img/whiteboard/rectFrame.png);
+}
+
+.wb_btn_rectFilled {
+  background-image: url(../img/whiteboard/rectFilled.png);
+}
+
+.wb_btn_ovalFrame {
+  background-image: url(../img/whiteboard/ovalFrame.png);
+}
+
+.wb_btn_ovalFilled {
+  background-image: url(../img/whiteboard/ovalFilled.png);
+}
+
+.wb_btn_font {
+  background-image: url(../img/whiteboard/font.png);
+}
+
+.wb_btn_picture {
+  background-image: url(../imgpicture.png);
+}
+
+.wb_btn_eraser {
+  background-image: url(../img/whiteboard/eraser.png);
+}
+
+.wb_btn_save {
+  background-image: url(../img/whiteboard/empty.png);
+}
+
+.wb_btn_clear {
+  background-image: url(../img/whiteboard/empty.png);
+}
+
+.wb_btn_color {
+  background-image: url(../img/whiteboard/color.png);
+}
+
+.wb_btn_undo {
+  background-image: url(../img/whiteboard/undo.png);
+}
+
+.wb_btn_lineWidth {
+  background-image: url(../img/whiteboard/lineWidth.png);
+}
+
+#font_menu {
+  padding:10px;
+}
+
+#font_menu li {
+  padding: 2px;
+  border: 1px solid #000;
+  margin: 2px;
+  float: left;
+  width: 15px;
+  text-align: center;
+  cursor: pointer;
+  color: #000;
+}
+
+#font_menu UL {
+  overflow: hidden;
+  float: right;
+}
+
+#font_menu LI {
+  font-weight: bold;
+}
+
+#font_boldBtn {
+  
+}
+
+#font_italicBtn {
+  font-style: italic;
+}
+
+#font_underlineBtn {
+  text-decoration: underline;
+}
+
+#font_size {
+  width: 45px;
+  margin-top: 3px;
+}
+
+#font_textarea {
+  display: none;
+  border: 1px dashed #7D7D7D;
+  position: absolute;
+  overflow-y: hidden;
+}
+
+#line_width {
+  width: 120px;
+  padding: 10px;
+}
+
+#line_width .lw_bar {
+  height: 25px;
+  margin: 2px 0;
+  background-color: #8EA7BF;
+  cursor: pointer;
+  border: 1px solid #4F9EE8
+}
+
+#line_width .lw_bar:hover {
+  background-color: #DCE6E8;
+}
+
+#line_width .lw_bar.selected {
+  background-color: #DCE6E8;
+}
+
+#lw_1>div {
+  height: 1px;
+  background-color: #0E6BC2;
+  position: relative;
+  top: 12px;
+}
+
+#lw_3>div {
+  height: 3px;
+  background-color: #0E6BC2;
+  position: relative;
+  top: 11px;
+}
+
+#lw_5>div {
+  height: 5px;
+  background-color: #0E6BC2;
+  position: relative;
+  top: 10px;
+}
+
+#lw_8>div {
+  height: 8px;
+  background-color: #0E6BC2;
+  position: relative;
+  top: 8px;
+}
+
+.wb_toolbar_menu {
+  display: none;
+  z-index: 100;
+  position: absolute;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background: #FAFAFA;
+  border: 1px solid #666;
+}
+
+.wb_mask {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  overflow: hidden;
+  height: 100%;
+  opacity: 0.7;
+  display: none;
+  background: url(../img/whiteboard/loading.gif) no-repeat #D6D0D0 center center;
+}
+
+.wb-mask-display {
+  display: block;
+}

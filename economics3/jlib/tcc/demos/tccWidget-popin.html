@@ -1,0 +1,64 @@
+<html>
+<head>
+<link rel="stylesheet" href="../css/tccWidget-popin.css"></link>
+</head>
+<body>
+  <button type="button" id="showModalBtn">show popin</button>
+  <div class="tccWidget-popin" id="myModal" style="width: 300px; margin-left: -150px;">
+    <span class="tccWidget-popin-closeIcon" data-dismiss="popin"></span>
+    <div class="tccWidget-popin-header">
+      <div class="tccWidget-popin-header-text">Modal header text</div>
+    </div>
+    <div class="tccWidget-popin-body">
+      <p>One fine body...</p>
+      <button id="showOtherModal">open other popin</button>
+    </div>
+    <div class="tccWidget-popin-footer">
+      <button type="button" data-dismiss="popin">Close</button>
+      <button type="button" id="saveBtn">Save changes</button>
+    </div>
+  </div>
+  <div class="tccWidget-popin" id="otherModal">
+    <span class="tccWidget-popin-closeIcon" data-dismiss="popin"></span>
+    <div class="tccWidget-popin-header">
+      <div class="tccWidget-popin-header-text">Other popin</div>
+    </div>
+    <div class="tccWidget-popin-body">
+      <p>One fine body...</p>
+    </div>
+    <div class="tccWidget-popin-footer">
+      <button type="button" data-dismiss="popin">Close</button>
+    </div>
+  </div>
+  <div style="height: 1000px;"></div>
+  <script src="../libs/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+  <script src="../js/tccCommon-jquery.js" type="text/javascript"></script>
+  <script src="../i18n/tccWidget-popin-en_US.js" type="text/javascript"></script>
+  <script src="../js/tccWidget-popin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+      TCC.find("#showModalBtn").on("click", function() {
+        TCC.find("#myModal").popin({
+          backdrop : true,
+          //remote : "http://192.168.10.120/bs/test.html",
+          onShow : function() {
+            console.log("show popin");
+          },
+          onClose : function() {
+            console.log("close popin");
+          }
+        });
+      });
+
+      TCC.find("#showOtherModal").on("click", function() {
+        TCC.find("#otherModal").popin({
+          onShow : function() {
+            console.log("show other popin");
+          },
+          onClose : function() {
+            console.log("close other popin");
+          }
+        });
+      })
+    </script>
+</body>
+</html>

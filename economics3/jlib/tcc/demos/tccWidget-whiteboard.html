@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<link rel="stylesheet" type="text/css" href="/css/base.css">
+<link rel="stylesheet" type="text/css" href="/tcc/css/tccWidget-whiteboard.css" />
+<link rel="stylesheet" type="text/css" href="/tcc/css/tccWidget-colorPicker.css">
+<script type="text/javascript" src="/jslib/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/jslib/canvas/canvas2image.js"></script>
+
+<script type="text/javascript" src="/tcc/js/tccCommon-jquery.js"></script>
+<script type="text/javascript" src="/tcc/js/tccWidgetBase.js"></script>
+<script type="text/javascript" src="/tcc/js/tccWidget-colorPicker.js"></script>
+<script type="text/javascript" src="/tcc/js/base64.js"></script>
+
+
+<script type="text/javascript" src="/tcc/js/tccWidget-whiteboard-Util.js"></script>
+<script type="text/javascript" src="/tcc/js/tccWidget-whiteboard-UndoManager.js"></script>
+<script type="text/javascript" src="/tcc/js/tccWidget-whiteboard-Processor.js"></script>
+<script type="text/javascript" src="/tcc/js/tccWidget-whiteboard.js"></script>
+
+
+
+<script>
+  TCC.ready(".whiteboard", function() {
+    wb.init(".whiteboard", {
+      width : 800,
+      height : 450,
+      toolbarPos : "left",
+      //backgroundColor : "#A3BFF0",
+      imagePos : "center",
+      eraserSize : 20,
+      moveImage : true
+    });
+
+    TCC.find("#save").on("click", function() {
+      var image = wb.getImage();
+      console.log(image.src.length);
+    });
+
+    TCC.find("#clear").on("click", function() {
+      wb.clear();
+    });
+
+    TCC.find("#load").on("click", function() {
+      wb.loadImage("/img/tool/chatroom/1.jpg");
+    });
+  });
+</script>
+</head>
+<body>
+  <div class="whiteboard" style="position: absolute; left: 300px; top: 50px;">
+    <div class="canvas">
+      <canvas id="canvas_o"></canvas>
+      <canvas id="canvas_t" style="position: absolute; top: 0px; left: 0px;"></canvas>
+    </div>
+    <textarea id="font_textarea"></textarea>
+    <div class="wbToolbarWrap">
+      <ul class="wb_toolbar">
+        <li id="sketch" class="wb_btn wb_icon_btn wb_btn_sketch"></li>
+        <li id="line" class="wb_btn wb_icon_btn wb_btn_line"></li>
+        <li id="rectFrame" class="wb_btn wb_icon_btn wb_btn_rectFrame"></li>
+        <li id="rectFilled" class="wb_btn wb_icon_btn wb_btn_rectFilled"></li>
+        <li id="ovalFrame" class="wb_btn wb_icon_btn wb_btn_ovalFrame"></li>
+        <li id="ovalFilled" class="wb_btn wb_icon_btn wb_btn_ovalFilled"></li>
+        <li id="font" class="wb_btn wb_icon_btn wb_btn_font"></li>
+        <li id="eraser" class="wb_btn wb_icon_btn wb_btn_eraser"></li>
+        <li id="lineWidth" class="wb_btn wb_icon_btn wb_btn_lineWidth"></li>
+        <li id="color" class="wb_btn wb_icon_btn wb_btn_color"></li>
+        <li id="undo" class="wb_btn wb_icon_btn wb_btn_undo"></li>
+        <li id="wb_save" style="display: none;">Save</li>
+        <li id="wb_clear" style="display: none;">Clear</li>
+        <li id="wb_cancel" style="display: none;">Clear</li>
+      </ul>
+    </div>
+    <div id="font_menu" class="wb_toolbar_menu">
+      <div>
+        <div>
+          <select id="font_family">
+            <option value="Arial Black">Arial Black</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Courier">Courier</option>
+            <option value="System">System</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Trebuchet MS">Trebuchet MS</option>
+            <option value="Verdana">Verdana</option>
+          </select>
+        </div>
+        <div>
+          <select id="font_size">
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+            <option value="22">22</option>
+            <option value="24">24</option>
+            <option value="26">26</option>
+            <option value="28">28</option>
+            <option value="30">30</option>
+          </select>
+          <ul>
+            <li id="font_boldBtn">B</li>
+            <li id="font_italicBtn">I</li>
+            <li id="font_underlineBtn">U</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="line_width" class="wb_toolbar_menu">
+      <div class="lw_bar" id="lw_1">
+        <div></div>
+      </div>
+      <div class="lw_bar" id="lw_3">
+        <div></div>
+      </div>
+      <div class="lw_bar" id="lw_5">
+        <div></div>
+      </div>
+      <div class="lw_bar" id="lw_8">
+        <div></div>
+      </div>
+    </div>
+    <div class="wb_mask"></div>
+  </div>
+  <div style="clear: both;">
+    <button id="save">save</button>
+    <button id="clear">clear</button>
+    <button id="load">load</button>
+  </div>
+</body>
+</html>

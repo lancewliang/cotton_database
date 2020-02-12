@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE project [
+    <!ENTITY env SYSTEM "../../../../../../env.xml">
+    <!ENTITY env_local SYSTEM "../../../../../../env_local.xml">
+]>
+
+<project name="model/entity/production/country/db/base" default="compile">
+
+  &env_local;
+  &env;
+
+  <target name="compile" depends="init">
+     
+    <javac debug="true" classpath="${EXTRALIBS}"
+      includes="model/entity/production/country/db/base/Base_YieldYearSQL.java
+model/entity/production/country/db/base/Base_GrowAreaYearSQL.java
+model/entity/production/country/db/base/Base_YieldMonthSQL.java
+model/entity/production/country/db/base/Base_YieldWeekSQL.java
+model/entity/production/country/db/base/Base_AgricultureYieldWeekSQL.java"
+      srcdir="${SRC_DIR}"
+      destdir="${INSTALLDIR}"/>
+  </target>
+   
+</project>

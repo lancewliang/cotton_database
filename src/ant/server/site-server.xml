@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The configuration document is for "file conversion" server. The server will process these type of instructions: -->
+<ccserver>
+	<name>Site Server</name>
+	<version>1.0</version>
+	<port>10015</port>
+	<description>Site backend Service</description>
+
+	<worker-group type="queue">
+		<instruction-queue>
+			<initial-capacity>100</initial-capacity>
+		</instruction-queue>
+		<enqueue-worker>
+			<working-interval>20000</working-interval>
+			<instruction-loader>
+				<instruction-loader-class>ant.server.Loader</instruction-loader-class>
+			</instruction-loader>
+		</enqueue-worker>
+		<execute-workers>
+			<worker-count>10</worker-count>
+			<working-interval>1000</working-interval>
+			<instruction-executor>
+				<instruction-executor-class>ant.server.Executor</instruction-executor-class>
+			</instruction-executor>
+		</execute-workers>
+	</worker-group>
+
+</ccserver>

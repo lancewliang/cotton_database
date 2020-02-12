@@ -1,0 +1,31 @@
+.tccContentListWrap {
+  border: 1px solid #4f4f4f;
+  background-color: #171717;
+  color: #DBDBDB;
+  position: absolute;
+  left:40px;
+  text-align: left;
+}
+
+.tccContentListUl {
+  list-style: none;
+  padding-left: 0px;
+  float: left;
+  border-left: 2px solid #FEA11C
+}
+
+.tccContentListItem {
+  padding:10px;
+  font-size: 13px;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+
+.tccContentListDetail{
+  margin: 5px;
+}
+
+.borderFree{
+    border-left:0px;
+}

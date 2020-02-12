@@ -1,0 +1,58 @@
+Sub doChart()
+    Dim sname As String
+    sname = ActiveSheet.Name
+  
+    Dim nCol As Integer
+    Dim chartnCol As Integer
+    Dim nColValueSTR As String
+    Dim nColValue2 As String
+    
+    
+    Dim nRow As Integer
+    
+    '通过循环获得有效行数
+    nRow = 1
+    chartnCol = 1
+    Do While (Sheets(sname).Cells(nRow, 1).Value <> "")
+        nRow = nRow + 1
+    Loop
+    
+    
+    '通过循环获取列数
+    nCol = 1
+    Do While (Sheets(sname).Cells(1, nCol).Value <> "")
+       
+        nColValueSTR = Sheets(sname).Cells(1, nCol).Value
+        If InStr(nColValueSTR, "Chart") > 0 Then
+          chartnCol = 1
+        
+          Set mychart = Sheets(sname).ChartObjects.Add(0, 0, 800, 400)
+          Dim vchartSTRs() As String
+          vchartSTRs = Split(nColValueSTR, ":")
+          If vchartSTRs(1) = "xlLineMarkers" Then
+             mychart.Chart.ChartType = xlLineMarkers
+          End If
+
+          Dim vchartColSTRs() As String
+          vchartColSTRs = Split(vchartSTRs(2), ",")
+          Dim sl As Integer
+          Dim i As Integer
+          sl = UBound(vchartColSTRs) - LBound(vchartColSTRs)
+          For i = 0 To sl
+             Dim dv As String
+             dv = vchartColSTRs(i)
+             mychart.Chart.SeriesCollection.NewSeries
+           
+             mychart.Chart.SeriesCollection(chartnCol).Values = "='" & sname & "'!R3C" & dv & ":R" & nRow & "C" & dv
+             mychart.Chart.SeriesCollection(chartnCol).Name = Sheets(sname).Cells(2, CInt(dv)).Value
+             
+             chartnCol = chartnCol + 1
+          Next
+
+            mychart.Chart.SeriesCollection(1).XValues = "='" & sname & "'!R3C" & "1" & ":R" & nRow & "C" & "1"
+           mychart.Chart.Location Where:=xlLocationAsObject, Name:=sname
+        End If
+        nCol = nCol + 1
+    Loop
+   
+End Sub

@@ -1,0 +1,178 @@
+
+
+<table border="1" cellpadding="0" cellspacing="0">
+  <thead>
+    <tr>
+      <td>列坐标</td>
+      <td>列名称</td>
+      <td>字段类型</td>
+      <td>字段项</td>
+      <td>商品</td>
+      <td>国家</td>
+      <td wdith="150px">额外条件</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody id="coltable"></tbody>
+</table>
+<hr>
+<button type="button" name="n1" onclick="saveAndPrintCols()">生成格式</button>
+
+
+
+<SCRIPT>
+  var cols = new Array();
+  var reportFomart = {};
+  reportFomart.reportLabel = "`reportLabel`";
+  reportFomart.commodity_dimension = "`commodity_dimension`";
+  reportFomart.time_dimension = "`time_dimension`";
+  reportFomart.country_dimension = "`country_dimension`";
+  reportFomart.reportStartDate = "`reportStartDate`";
+  reportFomart.reportEndDate = "`reportEndDate`";
+  reportFomart.cols = cols;
+  reportFomart.reportType = "`reportType`";
+  function orderColsByCol() {
+    reportFomart.cols.sort(function(x, y) {
+      return (x.col > y.col);
+    });
+  }
+  function addTimeCol() {
+    var col = {
+      type : "time-dimension",
+      col : "A",
+      label : fieldMappingData.selector.getTimeDimensionObj(reportFomart.time_dimension).label
+    };
+    cols.push(col);
+    printCols();
+  }
+  addTimeCol();
+  function addExpCol(form) {
+    if (form.label.value == '') {
+      alert("请填写字段名称");
+      return false;
+    }
+    if (checkColBeforeAdd(ccGetSelectedOption(form.col).value)) {
+      alert("重复的列坐标");
+      return false;
+    }
+    var col = {
+      type : "expression",
+      col : ccGetSelectedOption(form.col).value,
+      expression : form.expression.value,
+      label : form.label.value
+    };
+    cols.push(col);
+    orderColsByCol();
+    printCols();
+  }
+  function addDBCol(form) {
+    if (form.label.value == '') {
+      alert("请填写字段名称");
+      return false;
+    }
+    if (checkColBeforeAdd(ccGetSelectedOption(form.col).value)) {
+      alert("重复的列坐标");
+      return false;
+    }
+    var col = {
+      type : "model",
+      col : ccGetSelectedOption(form.col).value,
+      model : ccGetSelectedOption(form.model_class).value,
+      model_label : ccGetSelectedOption(form.model_class).text,
+      label : form.label.value,
+      value : ccGetSelectedOption(form.field).value,
+      value_label : ccGetSelectedOption(form.field).text
+    };
+    if (form.commodity) {
+      col.commodity = ccGetSelectedOption(form.commodity).value;
+    }
+    if (form.country) {
+      col.country = ccGetSelectedOption(form.country).value;
+    }
+    col.condition = loadColConditionObj(col.model);
+    col.condition_label = loadColConditionObj_label(col.model);
+    cols.push(col);
+    orderColsByCol();
+    printCols();
+  }
+
+  function checkColBeforeAdd(col) {
+    var has = false;
+    TCC.each(cols, function(idx, o) {
+      if (col == o.col) {
+        has = true;
+
+      }
+    });
+    return has;
+  }
+  function deletCol(c) {
+    TCC.each(cols, function(idx, o) {
+      if (o.col == c) {
+        cols.splice(idx, 1);
+      }
+    });
+    printCols();
+  }
+  function printCols() {
+    TCC.find("#coltable").html("");
+    var htm = "";
+    TCC.each(cols, function(idx, o) {
+      if (o.type == "time-dimension") {
+        htm += "<TR><TD>" + o.col + "</TD><TD>" + o.label + "</TD><TD>时间维度</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>";
+      } else if (o.type == "expression") {
+        htm += "<TR><TD>" + o.col + "</TD><TD>" + o.label + "</TD><TD>表达式</TD><TD>" + o.expression
+            + "</TD><TD></TD><TD></TD><TD></TD><TD><button type='button' name='n' onclick=\"deletCol('" + o.col + "')\">删除</button></TD></TR>";
+      } else if (o.type == "model") {
+        var country_label = "";
+        if (o.country && o.country != "") {
+          country_label = o.country;
+        } else if (reportFomart.country_dimension && reportFomart.country_dimension != "") {
+          country_label = reportFomart.country_dimension;
+        }
+        var commodity_label = "";
+        if (o.commodity && o.commodity != "") {
+          commodity_label = o.commodity;
+        } else if (reportFomart.commodity_dimension && reportFomart.commodity_dimension != "") {
+          commodity_label = reportFomart.commodity_dimension;
+        }
+        var conditionSTR = "";
+        if (o.condition && o.condition != "") {
+          conditionSTR = o.condition_label;
+        }
+
+        htm += "<TR><TD>" + o.col + "</TD><TD>" + o.label + "</TD><TD>表字段</TD><TD>" + o.value_label + "</TD><TD>" + commodity_label + "</TD><TD>" + country_label + "</TD><TD>"
+            + conditionSTR + "</TD><TD><button type='button' name='n' onclick=\"deletCol('" + o.col + "')\">删除</button></TD></TR>";
+      }
+    });
+    TCC.find("#coltable").html(htm);
+  }
+  function saveAndPrintCols() {
+
+    reportFomart.weightUnit = document.form.WeightUnit.value;
+    reportFomart.lengthUnit = document.form.LengthUnit.value;
+
+    var json = JSON.stringify(reportFomart);
+    if (reportFomart.reportLabel == '') {
+      alert("请填写报表名字");
+      return false;
+    }
+    var url = "ePage?pg=CreateAndSaveFormat-AJAX&cmd=createFormat";
+    TCC.get(url, {
+      data : json
+    }, function(response) {
+
+      if (response.indexOf("true") > -1) {
+        try {
+          opener.window.postRequest('');
+        } catch (e) {
+        }
+
+        window.close();
+      } else {
+        alert("保存不成功");
+      }
+    });
+
+  }
+</SCRIPT>

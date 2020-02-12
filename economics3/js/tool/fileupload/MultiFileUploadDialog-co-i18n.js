@@ -1,0 +1,17 @@
+var cleanI18n = "Clean";
+var removeI18n = "Delete File";
+var watchNewFileI18n = "Please click the 'Browse...' button to select a file to attach.";
+var dismissI18n = "Do you want to upload {fileName}? If yes, please click the Upload button before you leave.";
+var warnFileZeroI18n = " is 0 byte.";
+var warnMaxNumberI18N = "You have uploaded the maximum number of files allowed for this function. Please press the \"Done\" button to continue.";
+var warnMaxSizeI18N = "There is not enough storage space available.";
+var warnUnvalidateFileNameI18N = "The file name should not contain the \"#\" or \"%\" characters nor should it start with the \".\", \"_\", \"$\", or \"`\" characters. A video file should not contain a \"'\".";
+var warnReuploadingFileNameI18N = " has been uploaded.";
+var Convert2ViewingI18N = "Conversion Request";
+var onlineViewingI18N = "Convert";
+var warnNotEnoughStorageMessageI18N = "There is not enough storage space available. You must leave at least.";
+var warnNotEnoughStorageMessageI18N2 = " space";
+var confirmLeavePageI18N = "The file upload is in progress. Are you sure you want to stop the upload?";
+var uploadingI18N = "The file is still uploading.\nYou will lose your uploaded files if you leave.\n\nAre you sure you want to leave?";
+var RememberI18N = "The selection has been remembered successfully.";
+var noScanI18N = "Not scanned";

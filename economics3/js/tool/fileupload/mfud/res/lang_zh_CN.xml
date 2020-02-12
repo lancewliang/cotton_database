@@ -1,0 +1,22 @@
+<resources>
+    <res>
+        <key>label1</key>
+        <value>Drag and Drop file upload is currently not available.</value>
+    </res>
+    <res>
+        <key>label2</key>
+        <value>please click</value>
+    </res>
+    <res>
+        <key>label3</key>
+        <value>button to begin upload.</value>
+    </res>
+    <res>
+        <key>check1_label</key>
+        <value>Always use enhanced mode.</value>
+    </res>
+    <res>
+        <key>btn_browser_label</key>
+        <value>浏览...</value>
+    </res>
+</resources>

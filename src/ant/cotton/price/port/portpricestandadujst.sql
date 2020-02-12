@@ -1,0 +1,16 @@
+UPDATE portpriceday SET standard='M1.1/8 CARMA' WHERE fromcountry='ESP';
+DELETE FROM portpriceday WHERE fromcountry='ESP' AND standard='CARMA';
+UPDATE portpriceday SET standard='S-6 1-1/8' WHERE fromcountry='IND' AND standard='SHANKAR-6 1-1/8'
+UPDATE portpriceday SET standard='S-6 1-5/32' WHERE fromcountry='IND' AND standard='SHANKAR-6 1-5/3'
+UPDATE portpriceday SET standard='S-6 1-5/32' WHERE fromcountry='IND' AND standard='SHANKAR-6 1-5/32'
+UPDATE portpriceday SET standard='T 1467' WHERE fromcountry='PK' AND standard='T/1467'
+UPDATE portpriceday SET standard='EMOT SM' WHERE fromcountry='USA' AND standard='EMOTSM'
+DELETE FROM portpriceday WHERE fromcountry='ARG' AND standard='1-1/16' 
+DELETE FROM portpriceday WHERE fromcountry='IND' AND standard='1-1/8' 
+ DELETE FROM portpriceday WHERE fromcountry='USA' AND standard='1-1/8' 
+UPDATE portpriceday SET standard='CA SM1-1/8' WHERE fromcountry='USA' AND standard='CA SM'
+UPDATE portpriceday SET standard='CA SM' WHERE fromcountry='USA' AND standard='CA SM1-1/8'
+DELETE FROM portpriceday WHERE fromcountry='USA' AND standard='1-5/32' 
+ UPDATE portpriceday SET standard='EMOT SM' WHERE fromcountry='USA' AND standard='EMOT SM1-1/8'
+UPDATE portpriceday SET standard='SJV SM 1-5/32' WHERE fromcountry='USA' AND standard='SJV SM'
+UPDATE portpriceday SET standard='GM 1-1/8' WHERE   standard='£¨Ïàµ±ÓÚGM£©1.1/8'

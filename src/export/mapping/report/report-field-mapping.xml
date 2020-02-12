@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<models time_dimension="year" label="年">
+		<model label="消费量" model_class="model.entity.consumption.ConsumptionYear" />
+		<model label="种植面积" model_class="model.entity.production.country.GrowAreaYear" />
+		<model label="工业库存" model_class="model.entity.stock.IndustrialStockMonth">
+			<field label="库存量" attr="value" />
+			<field label="库存天数" attr="days" />
+		</model>
+		<model label="商业库存" model_class="model.entity.stock.BusinessStockMonth" hasCondition="BusinessStockMonth" />
+		<model label="收抛储" model_class="model.entity.gov.country.GovYear">
+			<field label="收储量" attr="buyValue" />
+			<field label="抛储量" attr="sellValue" />
+			<field label="储备量" attr="reserveValue" />
+		</model>
+		<model label="进口量" model_class="model.entity.custom.country.ImportYear" hasCondition="ImportYear" />
+		<model label="出口量" model_class="model.entity.custom.country.ExportYear" hasCondition="ExportYear" />
+		<model label="产量" model_class="model.entity.production.country.YieldYear" />
+	</models>
+	<models time_dimension="month" label="月">
+		<model label="销费" model_class="model.entity.consumption.ConsumptionMonth" />
+		<model label="销售 " model_class="model.entity.sale.country.SaleMonth" />
+		<model label="进口" model_class="model.entity.custom.country.ImportMonth" hasCondition="ImportMonth" />
+		<model label="出口" model_class="model.entity.custom.country.ExportMonth" hasCondition="ExportMonth" />
+		<model label="收抛储" model_class="model.entity.gov.country.GovMonth">
+			<field label="收储量" attr="buyValue" />
+			<field label="抛储量" attr="sellValue" />
+			<field label="储备量" attr="reserveValue" />
+		</model>
+		<model label="产量" model_class="model.entity.production.country.YieldMonth" />
+		<model label="工业库存" model_class="model.entity.stock.IndustrialStockMonth" />
+		<model label="工业库存日数" model_class="model.entity.stock.IndustrialStockDayMonth">
+			<field label="库存天数" attr="days" />
+		</model>
+		<model label="商业库存" model_class="model.entity.stock.BusinessStockMonth" hasCondition="BusinessStockMonth" />
+	</models>
+	<models time_dimension="day" label="日">
+		<model label="消费" model_class="model.entity.consumption.ConsumptionDay">
+			<field label="当年累计消费总量" attr="total" />
+		</model>
+		<model label="销售 " model_class="model.entity.sale.country.SaleDay">
+			<field label="当年累计销售总量" attr="total" />
+		</model>
+		<model label="总产量" model_class="model.entity.production.country.YieldYear">
+			<field label="总产量" attr="value" />
+			<field label="状态" attr="reportStatus" />
+			<field label="年度" attr="year" />
+		</model>
+		<model label="面积" model_class="model.entity.production.country.GrowAreaYear">
+			<field label="面积" attr="value" />
+			<field label="状态" attr="reportStatus" />
+			<field label="年度" attr="year" />
+		</model>
+		<model label="产量" model_class="model.entity.production.country.YieldDay">
+			<field label="当年累计产总量" attr="total" />
+		</model>
+		<model label="进出口" model_class="model.entity.custom.country.ImportExportDay">
+			<field label="当年累计总量" attr="total" />
+		</model>
+		<model label="收抛储" model_class="model.entity.gov.country.GovDay">
+			<field label="收储量" attr="buyValue" />
+			<field label="抛储量" attr="sellValue" />
+			<field label="累计收储量" attr="totalBuyValue" />
+			<field label="累计抛储量" attr="totalSellValue" />
+		</model>
+		<model label="期货价格" model_class="model.entity.price.country.FuturePriceDay" hasCondition="FuturePriceDay">
+			<field label="开盘价" attr="openingValue" />
+			<field label="最高价" attr="topValue" />
+			<field label="最低价" attr="minimumValue" />
+			<field label="收盘价" attr="closingValue" />
+			<field label="成交量" attr="volumes" />
+
+		</model>
+		<model label="国家港口现货价格" model_class="model.entity.price.country.PortPriceDay" hasCondition="PortPriceDay">
+			<field label="价格1" attr="value1" />
+			<field label="价格2" attr="value2" />
+		</model>
+		<model label="国家内现货价格" model_class="model.entity.price.country.CountryPriceDay" hasCondition="CountryPriceDay" />
+		<model label="天氣" model_class="model.entity.weather.WeatherDay" hasCondition="WeatherDay">
+			<field label="降雪" attr="snow" />
+			<field label="最高温度" attr="high" />
+			<field label="最低温度" attr="low" />
+			<field label="降雨" attr="precip" />
+		</model>
+		<model label="年供需平衡表" model_class="model.entity.wasde.obj.WorldSupplyDemandMonthlyHistory">
+			<field label="年度" attr="year" />
+			<field label="期初库存" attr="beginStock" />
+			<field label="产量" attr="production" />
+			<field label="进口" attr="imports" />
+			<field label="消费" attr="uses" />
+			<field label="出口" attr="exports" />
+			<field label="丢失" attr="loss" />
+			<field label="期末库存" attr="endStock" />
+		</model>
+
+	</models>
+	<models time_dimension="batch" label="批次">
+		<model label="收抛储" model_class="model.entity.gov.country.GovBatch" />
+	</models>
+</root>

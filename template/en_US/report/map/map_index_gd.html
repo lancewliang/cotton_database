@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>自适应显示多个点标记</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <style>
+        .info-tip {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 12px;
+            background-color: #fff;
+            height: 75px;
+            text-align: left;
+        }
+        
+        .amap-marker .marker-route {
+            position: absolute;
+            width: 40px;
+            height: 44px;
+            color: #e90000;
+             
+            cursor: pointer;
+        }
+         
+        
+    </style>
+    <script src="http://cache.amap.com/lbs/static/es5.min.js"></script>
+    <script src="http://webapi.amap.com/maps?v=1.3&key=b111f343ec98c0dde90ff38ae0507056"></script>
+
+    <script TYPE="text/javascript" src="/jlib/jquery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript">
+    
+    $(function(){
+      
+    })
+    </script>
+</head>
+<body>
+<div id="container"></div>
+<div class="button-group">
+          <form id="form" name="form">
+            <input type="hidden" name="cmd">
+            <textarea id="txtarea" name="txtarea" form="form">
+           
+            </textarea> 
+            <br>
+            <label><input id="mem-0" name="mem" type="checkbox" value="0" />小于3万 </label> 
+<label><input id="mem-1" name="mem" type="checkbox" value="1"  />3~小于5万 </label> 
+<label><input id="mem-2" name="mem" type="checkbox" value="2"  />5~小于7万</label> 
+<label><input id="mem-3" name="mem" type="checkbox" value="3"  />7~小于9万</label> 
+<label><input id="mem-4" name="mem" type="checkbox" value="4"  />大于9万</label> 
+          </form>
+            <input type="button" onclick="document.form.cmd.value='ids';map_load();"  class="button" value="id 画图"></input>
+            <input type="button" onclick="document.form.cmd.value='sql';map_load();"  class="button" value="sql 画图"></input>
+
+</div>
+<div class="info-tip">
+    <div id="centerCoord"></div>
+    <div id="tips"></div>
+</div>
+<script>
+document.getElementById("mem-0").checked =true;
+document.getElementById("mem-1").checked =true;
+document.getElementById("mem-2").checked =true;
+document.getElementById("mem-3").checked =true;
+document.getElementById("mem-4").checked =true;
+var markerArr = null;
+var maphash = null;
+var map = new AMap.Map('container', {
+  resizeEnable: true,
+  center: [121.482, 31.3006],
+  zoom: 14
+}); 
+    function map_load(){
+      
+       
+      $.ajax({
+        type: "POST",
+        async: false, 
+        dataType: "json",
+        url: "q?pg=ListAllMap-Restant-Data",
+        data: $('#form').serialize(),
+        success: function (result) {
+          markerArr = eval(result);
+        },
+        error: function(data) {
+            alert("error:"+data.responseText);
+         }
+       });  
+       map.clearMap();  // 清除地图覆盖物
+       maphash = {};
+       for (var i = 0; i < markerArr.length; i++) {
+         map[markerArr[i].keyID] = markerArr[i];
+         var imagesrc = "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png" ;
+         var saleslevel = markerArr[i].salesvalue/10000;
+         if(saleslevel<5 && saleslevel>=3){
+             if(!document.getElementById("mem-1").checked){
+        	
+                     		 continue;
+        	 }
+           imagesrc = "http://webapi.amap.com/theme/v1.3/markers/n/mark_b1.png" ;
+         }else  if(saleslevel<7 && saleslevel>=5){
+             if(!document.getElementById("mem-2").checked){
+        	        		 continue;
+        	 }
+
+        	 imagesrc = "http://webapi.amap.com/theme/v1.3/markers/n/mark_r2.png" ;
+         }else  if(saleslevel<9 && saleslevel>=7){
+             if(!document.getElementById("mem-3").checked){
+        	        		 continue;
+        	 }
+
+        	 imagesrc = "http://webapi.amap.com/theme/v1.3/markers/n/mark_r3.png" ;
+         }else  if(saleslevel>=9){
+        	 if(!document.getElementById("mem-4").checked){
+        		 continue;
+        	 }
+
+        	 imagesrc = "http://webapi.amap.com/theme/v1.3/markers/n/mark_r4.png" ;
+           
+         }else{
+        	 if(!document.getElementById("mem-0").checked){
+        		 continue;
+        	 }
+         }
+         
+         var marker =  new AMap.Marker({
+           map: map,
+           position: [markerArr[i].longitude, markerArr[i].latitude],
+           draggable: false,      
+           icon: new AMap.Icon({            
+             size: new AMap.Size(40, 50),  //图标大小
+             image: imagesrc 
+           })    ,       
+           info:"" + markerArr[i].name + "</br>地址：" + markerArr[i].adress + "</br> 销量:"+markerArr[i].salesvalue + "</br>keyid :"+markerArr[i].keyID
+         });
+         marker.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+           offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
+           content: "<span >"+markerArr[i].name+"</span>"
+         });
+         marker.on('rightclick', function(e) {
+           $("#tips").html(e.target.G.info);
+         });
+       }
+       var newCenter = map.setFitView();
+    }
+</script>
+<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model-mappings>
+	<model-mapping type="分类进口量" time-dimension="月" model-class="model.entity.custom.country.ImportTypeMonth" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 进口到国家="toCountry" 贸易类型="type" 进口量="value" 重量单位="weightUnit" />
+	</model-mapping>
+	<model-mapping type="进口量" time-dimension="月" model-class="model.entity.custom.country.ImportExportMonth" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 进口到国家="toCountry" 出口源国家="fromCountry" 进口量="value" 重量单位="weightUnit" />
+	</model-mapping>
+	<model-mapping type="进口金额" time-dimension="月" model-class="model.entity.custom.country.ImportExportMonth" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 进口到国家="toCountry" 出口源国家="fromCountry" 进口金额="money" 价格单位="priceUnit" />
+	</model-mapping>
+	<model-mapping type="出口量" time-dimension="月" model-class="model.entity.custom.country.ImportExportMonth" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 出口源国家="fromCountry" 出口到国家="toCountry" 出口量="value" 重量单位="weightUnit" />
+	</model-mapping>
+
+	<model-mapping type="出口金额" time-dimension="月" model-class="model.entity.custom.country.ImportExportMonth" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 出口源国家="fromCountry" 出口到国家="toCountry" 出口金额="money" 价格单位="priceUnit" />
+	</model-mapping>
+	<model-mapping type="收抛储" time-dimension="月" model-class="model.entity.gov.country.GovMonth" dimension="0">
+		<field-mapping 月份="reportDate" 商品="commodity" 国家="country" 收储量="buyValue" 抛储量="sellValue" 储备量="reserveValue" 重量单位="weightUnit" />
+		<ignored-field-mapping 周期="" />
+	</model-mapping>
+	<model-mapping type="收抛储" time-dimension="批次" model-class="model.entity.gov.country.GovBatch" dimension="0">
+		<field-mapping 批次="name" 开始月="startDate" 结束月="endDate" 商品="commodity" 国家="country" 收储量="buyValue" 抛储量="sellValue" 储备量="reserveValue" 重量单位="weightUnit" />
+		<ignored-field-mapping 周期="" />
+	</model-mapping>
+	<model-mapping type="汇率" time-dimension="日" model-class="model.entity.price.country.ExchangeRateDay" dimension="2">
+		<field-mapping 周期="reportDate" 国家FROM="fromCurreny" 国家TO="toCurreny" 汇率="value" />
+	</model-mapping>
+	<model-mapping type="消费" time-dimension="年" model-class="model.entity.consumption.ConsumptionYear" dimension="2">
+		<field-mapping 周期="year" 商品="commodity" 国家="country" 消费量="value" 重量单位="weightUnit" />
+	</model-mapping>
+	<model-mapping type="国家港口现货价格" time-dimension="日" model-class="model.entity.price.country.PortPriceDay" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 国家="country"  价格类型="portPriceType" 源国家="fromCountry" 规格="standard" 价格1="value1" 价格单位1="priceUnit1" 重量单位1="weightUnit1"  价格2="value2" 价格单位2="priceUnit2" 重量单位2="weightUnit2"/>
+	</model-mapping>
+	<model-mapping type="国家内现货价格" time-dimension="日" model-class="model.entity.price.country.CountryPriceDay" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 国家="country" 价格="value" 规格="standard" 区域="state" 价格单位="priceUnit" 计量单位类型="unitType" 重量单位="unit" 长度单位="unit" />
+	</model-mapping>
+	<model-mapping type="期货价格" time-dimension="日" model-class="model.entity.price.country.FuturePriceDay" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 国家="country" 价格="value" 交易所="bourse" 合约="contract" 价格单位="priceUnit" 重量单位="weightUnit" />
+	</model-mapping>
+
+	<model-mapping type="种植面积" time-dimension="年" model-class="model.entity.production.country.GrowAreaYear" dimension="2">
+		<field-mapping 周期="year" 商品="commodity" 国家="country" 播种面积="value" 面积单位="areaUnit" />
+	</model-mapping>
+	<model-mapping type="产量" time-dimension="年" model-class="model.entity.production.country.YieldYear" dimension="2">
+		<field-mapping 周期="year" 商品="commodity" 国家="country" 产量="value" 重量单位="weightUnit" />
+	</model-mapping>
+
+	<model-mapping type="产量" time-dimension="日" model-class="model.entity.production.country.YieldDay" dimension="0">
+		<field-mapping 日期="reportDate" 商品="commodity" 国家="country" 年度累计产量="total" 重量单位="weightUnit" />
+	</model-mapping>
+	<model-mapping type="销售" time-dimension="日" model-class="model.entity.sale.country.SaleDay" dimension="0">
+		<field-mapping 日期="reportDate" 商品="commodity" 国家="country" 年度累计销售量="total" 重量单位="weightUnit" />
+	</model-mapping>
+	<model-mapping type="销售" time-dimension="月" model-class="model.entity.sale.country.SaleMonth" dimension="0">
+		<field-mapping 月份="reportDate" 商品="commodity" 国家="country" 销售量="value" 重量单位="weightUnit" />
+	</model-mapping>
+
+	<model-mapping type="交易所库存" time-dimension="日" model-class="model.entity.stock.BourseStockWeek" dimension="0">
+		<field-mapping 日期="reportDate" 商品="commodity" 交易所="bourse" 国家="country" 库存="value" 预报="predictedValue" 重量单位="weightUnit" />
+		<ignored-field-mapping 周期="" />
+	</model-mapping>
+	<model-mapping type="周转库存" time-dimension="月" model-class="model.entity.stock.CycleStockMonth" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 国家="country" 区域="state" 库存量="value" 重量单位="weightUnit" />
+	</model-mapping>
+	<model-mapping type="工业库存" time-dimension="月" model-class="model.entity.stock.IndustrialStockMonth" dimension="0">
+		<field-mapping 月份="reportDate" 商品="commodity" 国家="country" 库存量="value" 重量单位="weightUnit" />
+	</model-mapping>
+	<model-mapping type="工业库存" time-dimension="月" model-class="model.entity.stock.IndustrialStockMonth" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 国家="country" 库存量="value" 重量单位="weightUnit" />
+	</model-mapping>
+	<model-mapping type="工业库存天数" time-dimension="月" model-class="model.entity.stock.IndustrialStockDayMonth" dimension="0">
+		<field-mapping 月份="reportDate" 商品="commodity" 国家="country" 天数="days" />
+	</model-mapping>
+	<model-mapping type="工业库存天数" time-dimension="月" model-class="model.entity.stock.IndustrialStockDayMonth" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 国家="country" 天数="days" />
+	</model-mapping>
+	<model-mapping type="商业库存" time-dimension="月" model-class="model.entity.stock.BusinessStockMonth" dimension="2">
+		<field-mapping 周期="reportDate" 商品="commodity" 国家="country" 区域="state" 库存量="value" 重量单位="weightUnit" />
+	</model-mapping>
+
+</model-mappings>

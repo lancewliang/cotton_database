@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<models time-dimension="year">
+		<model type="消费" model-class="model.entity.consumption.ConsumptionYear" query-class="model.entity.consumption.db.ConsumptionYearSQL" save-class="model.entity.consumption.db.ConsumptionYearSQL" />
+		<model type="种植面积" model-class="model.entity.production.country.GrowAreaYear" query-class="model.entity.production.country.db.GrowAreaYearSQL" save-class="model.entity.production.country.db.GrowAreaYearSQL" />
+		<model type="产量" model-class="model.entity.production.country.YieldYear" query-class="model.entity.production.country.db.YieldYearSQL" save-class="model.entity.production.country.db.YieldYearSQL" />
+		<model type="收抛储" model-class="model.entity.gov.country.GovYear" query-class="model.entity.gov.country.db.GovMonthSQL" />
+		<model type="进口" model-class="model.entity.custom.country.ImportYear" query-class="model.entity.custom.country.db.ImportSQL" query-class-table="true" />
+		<model type="出口" model-class="model.entity.custom.country.ExportYear" query-class="model.entity.custom.country.db.ExportSQL" query-class-table="true" />
+		<model type="工业库存" model-class="model.entity.stock.IndustrialStockMonth" query-class="model.entity.stock.db.IndustrialStockMonthSQL" />
+		<model type="商业库存" model-class="model.entity.stock.BusinessStockMonth" query-class="model.entity.stock.db.BusinessStockMonthSQL" query-class-table="true" />
+	</models>
+	<models time-dimension="month">
+		<model type="销售 " model-class="model.entity.sale.country.SaleMonth" save-class="model.entity.sale.country.db.SaleMonthSQL" query-class="model.entity.sale.country.db.SaleMonthSQL" />
+		<model type="消费 " model-class="model.entity.consumption.ConsumptionMonth" query-class="model.entity.consumption.db.ConsumptionMonthSQL" />
+		<model type="进口" model-class="model.entity.custom.country.ImportMonth" query-class="model.entity.custom.country.db.ImportSQL" query-class-table="true" />
+		<model type="出口" model-class="model.entity.custom.country.ExportMonth" query-class="model.entity.custom.country.db.ExportSQL" query-class-table="true" />
+		<model type="进出口" model-class="model.entity.custom.country.ImportExportMonth" save-class="model.entity.custom.country.db.ImportExportMonthSQL" />
+		<model type="分类进口" model-class="model.entity.custom.country.ImportTypeMonth" save-class="model.entity.custom.country.db.ImportTypeMonthSQL" />
+		<model type="收抛储" model-class="model.entity.gov.country.GovMonth" query-class="model.entity.gov.country.db.GovMonthSQL" save-class="model.entity.gov.country.db.GovMonthSQL" />
+		<model type="产量" model-class="model.entity.production.country.YieldMonth" query-class="model.entity.production.country.db.YieldMonthSQL" />
+		<model type="周转库存" model-class="model.entity.stock.CycleStockMonth" save-class="model.entity.stock.db.CycleStockMonthSQL" />
+		<model type="工业库存" model-class="model.entity.stock.IndustrialStockMonth" query-class="model.entity.stock.db.IndustrialStockMonthSQL" save-class="model.entity.stock.db.IndustrialStockMonthSQL" />
+		<model type="工业库存日数" model-class="model.entity.stock.IndustrialStockDayMonth" query-class="model.entity.stock.db.IndustrialStockDayMonthSQL" save-class="model.entity.stock.db.IndustrialStockDayMonthSQL" />
+		<model type="商业库存" model-class="model.entity.stock.BusinessStockMonth" query-class="model.entity.stock.db.BusinessStockMonthSQL" save-class="model.entity.stock.db.BusinessStockMonthSQL" query-class-table="true" />
+	</models>
+	<models time-dimension="week">
+		<model type="交易所库存" model-class="model.entity.stock.BourseStockWeek" save-class="model.entity.stock.db.BourseStockWeekSQL" />
+
+	</models>
+	<models time-dimension="day">
+		<model type="消费 " model-class="model.entity.consumption.ConsumptionDay" save-class="model.entity.consumption.db.ConsumptionDaySQL" query-class="model.entity.consumption.db.ConsumptionDaySQL" />
+		<model type="销售 " model-class="model.entity.sale.country.SaleDay" save-class="model.entity.sale.country.db.SaleDaySQL" query-class="model.entity.sale.country.db.SaleDaySQL" />
+		<model type="总产量" model-class="model.entity.production.country.YieldYear" save-class="model.entity.production.country.db.YieldYearSQL" query-class="model.entity.production.country.db.YieldYearSQL" />
+    <model type="面积" model-class="model.entity.production.country.GrowAreaYear" save-class="model.entity.production.country.db.GrowAreaYearSQL" query-class="model.entity.production.country.db.GrowAreaYearSQL" />
+    <model type="产量" model-class="model.entity.production.country.YieldDay" save-class="model.entity.production.country.db.YieldDaySQL" query-class="model.entity.production.country.db.YieldDaySQL" />
+		<model type="汇率" model-class="model.entity.price.country.ExchangeRateDay" save-class="model.entity.price.country.db.ExchangeRateDaySQL" />
+		<model type="期货价格" model-class="model.entity.price.country.FuturePriceDay" save-class="model.entity.price.country.db.FuturePriceDaySQL" query-class="model.entity.price.country.db.FuturePriceDaySQL" query-class-table="true" />
+		<model type="国家港口现货价格" model-class="model.entity.price.country.PortPriceDay" save-class="model.entity.price.country.db.PortPriceDaySQL" query-class="model.entity.price.country.db.PortPriceDaySQL" query-class-table="true" />
+		<model type="国家内现货价格" model-class="model.entity.price.country.CountryPriceDay" save-class="model.entity.price.country.db.CountryPriceDaySQL" query-class="model.entity.price.country.db.CountryPriceDaySQL" query-class-table="true" />
+		<model type="天气" model-class="model.entity.weather.WeatherDay" query-class="model.entity.weather.db.WeatherDaySQL" query-class-table="true" />
+		<model type="进出口" model-class="model.entity.custom.country.ImportExportDay" save-class="model.entity.custom.country.db.ImportExportDaySQL" query-class="model.entity.custom.country.db.ImportExportDaySQL" />
+		<model type="收抛储" model-class="model.entity.gov.country.GovDay" query-class="model.entity.gov.country.db.GovDaySQL" />
+		<model type="供需平衡表" model-class="model.entity.wasde.obj.WorldSupplyDemandMonthlyHistory" query-class="model.entity.wasde.db.WorldSupplyDemandMonthlyHistorySQL" />
+	</models>
+	<models time-dimension="batch">
+		<model type="收抛储" model-class="model.entity.gov.country.GovBatch" query-class="model.entity.gov.country.db.GovBatchSQL" save-class="model.entity.gov.country.db.GovBatchSQL" />
+
+	</models>
+</root>

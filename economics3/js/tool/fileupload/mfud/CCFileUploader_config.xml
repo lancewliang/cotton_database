@@ -1,0 +1,5 @@
+<CCUploader>
+	<config>
+		<uploadURL>http://{hostname}{upload_Servlet_URI}?cmd=upload&skipRep=Y&ppfx={ppfx}&campusId={campusId}&userId={userId}&isSV={isSV}&calAllowSize=-1</uploadURL>
+	</config>
+</CCUploader>

@@ -1,0 +1,35 @@
+<DATASOURCES>
+
+	<DATASOURCE>
+		<NAME>ccPool</NAME>
+		<CLASS>tcc.utils.db.mysql.MySQLDataSource</CLASS>
+		<PROPERTY>
+			<KEY>serverName</KEY>
+			<VALUE>127.0.0.1</VALUE>
+		</PROPERTY>
+		<PROPERTY>
+			<KEY>databaseName</KEY>
+			<VALUE>economics2</VALUE>
+		</PROPERTY>
+		<PROPERTY>
+			<KEY>portNumber</KEY>
+			<VALUE>3306</VALUE>
+		</PROPERTY>
+		<PROPERTY>
+			<KEY>user</KEY>
+			<VALUE>root</VALUE>
+		</PROPERTY>
+		<PROPERTY>
+			<KEY>password</KEY>
+			<VALUE>root</VALUE>
+		</PROPERTY>
+		<PROPERTY>
+			<KEY>initialSize</KEY>
+			<VALUE>5</VALUE>
+		</PROPERTY>
+		<PROPERTY>
+			<KEY>maxSize</KEY>
+			<VALUE>30</VALUE>
+		</PROPERTY>
+	</DATASOURCE>
+</DATASOURCES>

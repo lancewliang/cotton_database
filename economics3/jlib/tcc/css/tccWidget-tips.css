@@ -1,0 +1,24 @@
+.tccTipsBorder{
+  position: absolute;
+  z-index: 1001;
+  padding: 10px;
+  opacity : 0;
+  display: none;
+  text-align : left;
+}
+.tccTipsWrapper{
+  position: relative;
+  border: 1px solid #575757;
+  background-color: #FAEFD2;
+  border-radius: 3px;
+  -moz-box-shadow: 2px 2px 5px #575757;
+  -webkit-box-shadow: 2px 2px 5px #575757;
+  padding: 5px;
+}
+.tccTipsArrow{
+  background-image: url("../img/tips/hjttop.png");
+  height: 15px;
+  position: absolute;
+  width: 41px;
+  z-index: 1002;
+}

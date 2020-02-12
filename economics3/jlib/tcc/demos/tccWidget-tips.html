@@ -1,0 +1,61 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../css/tccWidget-tips.css">
+<script src="../libs/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../js/tccCommon-jquery.js" type="text/javascript"></script>
+<script src="../js/tccWidgetBase.js" type="text/javascript"></script>
+<script src="../js/tccWidget-tips.js" type="text/javascript"></script>
+</head>
+<style type="text/css">
+.tipsArea {
+  width: 80px;
+  background-color: #f1f1f1;
+  margin: 70px;
+  display: inline-block;
+}
+</style>
+
+<body id="ccbody">
+  <div id="container">
+    <div id="tipsA" class="tipsArea">Tips A</div>
+    <div id="tipsB" class="tipsArea">Tips B</div>
+  </div>
+  <div id="tips1" class="tccHidden" style="display: none">This tips is used for Tips A</div>
+  <div id="tips2" class="tccHidden" style="display: none">Tips B's content is here.</div>
+<hr/>
+<input type="button" value="show Tips A" onclick="show()"/>&nbsp;&nbsp;
+<input type="button" value="close Tips A" onclick="close()"/>&nbsp;&nbsp;
+<input type="button" value="destroy Tips A" onclick="destroy()"/>&nbsp;&nbsp;
+
+  <script type="text/javascript">
+      TCC.ready("#ccbody", function() {
+        var t1 = TCC.find("#tipsA");
+        t1.tips({
+          tips : '#tips1',
+          width : 200,
+          height: 500,
+          alignTo:["bottom","left"]
+        });
+        var t2 = TCC.find("#tipsB");
+        t2.tips({
+          tips : '#tips2',
+          width : 200
+        });
+      });
+      
+      function show(){
+        TCC.find("#tipsA").tips("show");
+      }
+      
+      function close(){
+        TCC.find("#tipsA").tips("close()");
+      }
+      
+      function destroy(){
+        
+      }
+      
+    </script>
+
+</body>
+</html>

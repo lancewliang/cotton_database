@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE project [
+    <!ENTITY env SYSTEM "../../../../../../env.xml">
+    <!ENTITY env_local SYSTEM "../../../../../../env_local.xml">
+]>
+
+<project name="model/entity/gov/country/db/base" default="compile">
+
+  &env_local;
+  &env;
+
+  <target name="compile" depends="init">
+     
+    <javac debug="true" classpath="${EXTRALIBS}"
+      includes="model/entity/gov/country/db/base/Base_GovMonthSQL.java
+model/entity/gov/country/db/base/Base_GovBatchSQL.java"
+      srcdir="${SRC_DIR}"
+      destdir="${INSTALLDIR}"/>
+  </target>
+   
+</project>

@@ -1,0 +1,52 @@
+<html>
+<head>
+<script src="../libs/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../js/tccCommon-jquery.js" type="text/javascript"></script>
+<script src="../js/tccWidgetBase.js" type="text/javascript"></script>
+<script src="../js/tccWidget-slider.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../css/tccWidget-slider.css">
+
+</head>
+<body>
+
+  <div id="test1">
+    <div class="tccBaseSliderPrev"></div>
+    <div class="tccBaseSliderWrap"></div>
+    <div class="tccBaseSliderNext"></div>
+  </div>
+
+  <script type="text/javascript">
+      (function() {
+        $(document).ready(function() {
+          TCC.find("#test1").slider({
+            items : [ 
+                      "<img src='' class='testImg'>1", 
+                      "<img src='' class='testImg'>2", 
+                      "<img src='' class='testImg'>3", 
+                      "<img src='' class='testImg'>4", 
+                      "<img src='' class='testImg'>5", 
+                      "<img src='' class='testImg'>6", 
+                      "<img src='' class='testImg'>7", 
+                      "<img src='' class='testImg'>8", 
+                      "<img src='' class='testImg'>9", 
+                      "<img src='' class='testImg'>0", 
+                      "<img src='' class='testImg'>11", 
+                      "<img src='' class='testImg'>12", 
+                      "<img src='' class='testImg'>13" 
+                    ],
+            itemWrap : "<div>$(item)</div>",
+            itemSize:{
+              width: 60,
+              height: 40
+            },
+            sliderSize:{
+              width: 300,
+              height: 40
+            }
+          });
+        });
+      })();
+    </script>
+
+</body>
+</html>

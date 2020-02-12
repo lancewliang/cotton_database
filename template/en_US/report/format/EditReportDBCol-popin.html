@@ -1,0 +1,309 @@
+
+<div style="width: 400px; margin-left: -150px; z-index: 350;" id="editDBCol" class="tccWidget-popin">
+  <span data-dismiss="popin" class="tccWidget-popin-closeIcon"></span>
+  <div class="tccWidget-popin-header">
+    <div class="tccWidget-popin-header-text"></div>
+  </div>
+  <div class="tccWidget-popin-body">
+    <FORM name="editDBCol_form" onsubmit="return false;">
+      <table>
+        <tr>
+          <td>列坐标:</td>
+          <td><select name="col">
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="H">H</option>
+              <option value="I">I</option>
+              <option value="J">J</option>
+              <option value="K">K</option>
+              <option value="L">L</option>
+              <option value="M">M</option>
+              <option value="N">N</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td>字段名称:</td>
+          <td><input name="label" type="text"></td>
+        </tr>
+
+        <!--fw type=if name=commodity_dimensionnull condition=commodity_dimension= defaultValue= fw-->
+        <tr>
+          <td>商品:</td>
+          <td><select name="commodity" onchange="model_class_commodityOnchange(document.editDBCol_form)"></select></td>
+        </tr>
+        <!--fw type=if name=commodity_dimensionnull fw-->
+        <!--fw type=if name=country_dimensionnull condition=country_dimension= defaultValue= fw-->
+        <tr>
+          <td>国家:</td>
+          <td><select name="country" onchange="model_class_contryOnchange(document.editDBCol_form)"></select></td>
+        </tr>
+        <!--fw type=if name=country_dimensionnull fw-->
+        <tr>
+          <td>表:</td>
+          <td><select name="model_class" onchange="model_classOnChange(document.editDBCol_form)"></select></td>
+        </tr>
+        <tr>
+          <td>数据项:</td>
+          <td><select name="field"></select></td>
+        </tr>
+      </table>
+
+    </FORM>
+    <hr>
+    搜索条件:<br>
+    <FORM name="PortPriceDayConditionsFORM" class="conditionsForms PortPriceDayConditionsFORM">
+      <table>
+        <tr>
+          <td>价格类型</td>
+          <td><select name="portPriceType" onchange="loadConditionSelect(1)" alt="价格类型"></select></td>
+        </tr>
+        <tr>
+          <td>源国家</td>
+          <td><select name="fromCountry" onchange="loadConditionSelect(2)" alt="源国家"></select></td>
+        </tr>
+        <tr>
+          <td>规格</td>
+          <td><select name="standard" alt="规格"></select></td>
+        </tr>
+      </table>
+    </FORM>
+
+    <FORM name="FuturePriceDayConditionsFORM" class="conditionsForms FuturePriceDayConditionsFORM">
+      <table>
+        <tr>
+          <td>交易所</td>
+          <td><select name="bourse" onchange="loadConditionSelect(1)" alt="交易所"></select></td>
+        </tr>
+        <tr>
+          <td>合同</td>
+          <td><select name="contract" alt="合同"></select></td>
+        </tr>
+      </table>
+    </FORM>
+    <FORM name="CountryPriceDayConditionsFORM" class="conditionsForms CountryPriceDayConditionsFORM">
+      <table>
+        <tr>
+          <td>按国家查询的区域价格类型</td>
+          <td><select name="state" onchange="loadConditionSelect(1)" alt="按国家查询的区域价格类型"></select></td>
+        </tr>
+        <tr>
+          <td>规格</td>
+          <td><select name="standard" alt="规格"></select></td>
+        </tr>
+      </table>
+    </FORM>
+    <FORM name="BusinessStockMonthConditionsFORM" class="conditionsForms BusinessStockMonthConditionsFORM">
+      <table>
+        <tr>
+          <td>按国家查询的区域</td>
+          <td><select name="state" alt="按国家查询的区域"></select></td>
+        </tr>
+      </table>
+    </FORM>
+
+    <FORM name="ImportYearConditionsFORM" class="conditionsForms ImportYearConditionsFORM" countrycondition="toCountry">
+
+      <table>
+        <tr>
+          <td>进口源国家</td>
+          <td><select name="fromCountry" alt="进口源国家"></select></td>
+        </tr>
+      </table>
+    </FORM>
+    <FORM name="ExportYearConditionsFORM" class="conditionsForms ExportYearConditionsFORM" countrycondition="fromCountry">
+
+      <table>
+        <tr>
+          <td>出口到国家</td>
+          <td><select name="toCountry" alt="出口到国家"></select></td>
+        </tr>
+      </table>
+    </FORM>
+    <FORM name="ImportMonthConditionsFORM" class="conditionsForms ImportMonthConditionsFORM" countrycondition="toCountry">
+
+      <table>
+        <tr>
+          <td>进口源国家</td>
+          <td><select name="fromCountry" alt="进口源国家"></select></td>
+        </tr>
+      </table>
+    </FORM>
+    <FORM name="ExportMonthConditionsFORM" class="conditionsForms ExportMonthConditionsFORM" countrycondition="fromCountry">
+
+      <table>
+        <tr>
+          <td>出口到国家</td>
+          <td><select name="toCountry" alt="出口到国家"></select></td>
+        </tr>
+      </table>
+    </FORM>
+    <FORM name="WeatherDayConditionsFORM" class="conditionsForms WeatherDayConditionsFORM">
+      <table>
+        <tr>
+          <td>区域</td>
+          <td><select name="weatherRegion" alt="区域"></select></td>
+        </tr>
+      </table>
+    </FORM>
+    
+  </div>
+  <div class="tccWidget-popin-footer">
+    <button type="button" data-dismiss="popin" class="saveBtn tlBtn" onclick="addDBCol(document.editDBCol_form)">保存</button>
+    <button type="button" data-dismiss="popin" class="closeBtn tlBtn">关闭</button>
+  </div>
+</div>
+
+
+<SCRIPT>
+  if (document.editDBCol_form.commodity) {
+    TCC.each(Commodity.properties.root.obj, function(idx, o) {
+      ccAddOption(document.editDBCol_form.commodity, o.label, o.label);
+    });
+  }
+  if (document.editDBCol_form.country) {
+    TCC.each(Country.properties.root.obj, function(idx, o) {
+      ccAddOption(document.editDBCol_form.country, o.value, o.value);
+    });
+  }
+  var modelObjs = fieldMappingData.selector.getModelObjs(reportFomart.time_dimension);
+  TCC.each(modelObjs, function(idx, o) {
+    ccAddOption(document.editDBCol_form.model_class, o.label, o.model_class);
+  });
+  function showDBCol() {
+    TCC.find('#editDBCol').popin({
+      onShow : function() {
+
+        model_classOnChange(document.editDBCol_form);
+      }
+    });
+  }
+
+  function showExpCol() {
+    TCC.find('#editExpCol').popin({
+      onShow : function() {
+
+      }
+    });
+  }
+
+  function model_classOnChange(form) {
+    ccRemoveAllOptions(form.field);
+
+    TCC.find(".conditionsForms").hide()
+    var selectedoption = ccGetSelectedOption(form.model_class);
+    var model_class = selectedoption.value;
+    var modelObj = fieldMappingData.selector.getModelObj(reportFomart.time_dimension, model_class);
+    var fieldObjs = fieldMappingData.selector.getFieldObjs(reportFomart.time_dimension, model_class);
+    if (fieldObjs != null) {
+      if (fieldObjs.length >= 1) {
+        TCC.each(fieldObjs, function(idx, o) {
+          ccAddOption(form.field, o.label, o.attr);
+        });
+      } else {
+        ccAddOption(form.field, fieldObjs.label, fieldObjs.attr);
+      }
+    } else {
+      ccAddOption(form.field, selectedoption.text, "value");
+    }
+    if (modelObj.hasCondition) {
+      var form = TCC.find("." + modelObj.hasCondition + "ConditionsFORM");
+
+      form.show();
+      loadConditionSelect(0);
+    }
+
+  }
+  function model_class_commodityOnchange() {
+    loadConditionSelect(0);
+  }
+  function model_class_contryOnchange() {
+    loadConditionSelect(0);
+  }
+  function loadConditionSelect(i) {
+    var model_class = ccGetSelectedOption(document.editDBCol_form.model_class).value;
+    var modelObj = fieldMappingData.selector.getModelObj(reportFomart.time_dimension, model_class);
+    if (modelObj.hasCondition) {
+      var url = "/ePage?pg=CreateReportFormatQueryCondition-AJAX";
+      var data = {};
+      var form = TCC.find("." + modelObj.hasCondition + "ConditionsFORM");
+      data.model_class = model_class;
+      if (document.editDBCol_form.country) {
+        data.country = document.editDBCol_form.country.value;
+      } else {
+        data.country = reportFomart.country_dimension;
+      }
+      if (document.editDBCol_form.commodity) {
+        data.commodity = document.editDBCol_form.commodity.value;
+      } else {
+        data.commodity = reportFomart.commodity_dimension;
+      }
+      data.countrycondition = form.attr("countrycondition");
+
+      var selectors = TCC.find("." + modelObj.hasCondition + "ConditionsFORM select");
+
+      var currentSelector = null;
+      selectors.each(function(obj, idx) {
+
+        if (i > idx) {
+          url += "&ConditionsFORM_" + obj.name + "=" + ccGetSelectedOption(obj).value;
+
+        } else if (i == idx) {
+          url += "&queryColValue=" + obj.name;
+          currentSelector = obj;
+        } else if (idx > i) {
+          obj.innerHTML = "";
+        }
+
+      });
+      if (currentSelector != null) {
+        TCC.get(url, data, function(response) {
+          TCC.find(currentSelector).html(response);
+          if (selectors.length - 1 > i) {
+            loadConditionSelect(i + 1);
+
+          }
+        });
+      }
+
+    }
+
+  }
+  function loadColConditionObj(model_class) {
+
+    var modelObj = fieldMappingData.selector.getModelObj(reportFomart.time_dimension, model_class);
+    var conditionSTR = "";
+    if (modelObj.hasCondition) {
+      var form = TCC.find("." + modelObj.hasCondition + "ConditionsFORM");
+      var selectors = TCC.find("." + modelObj.hasCondition + "ConditionsFORM select");
+
+      selectors.each(function(obj, idx) {
+        if (conditionSTR != "") {
+          conditionSTR += " and ";
+        }
+        conditionSTR += obj.name + "='" + ccGetSelectedOption(obj).value + "'";
+      });
+
+    }
+    return conditionSTR;
+
+  }
+  function loadColConditionObj_label(model_class) {
+
+    var modelObj = fieldMappingData.selector.getModelObj(reportFomart.time_dimension, model_class);
+    var conditionSTR = "";
+    if (modelObj.hasCondition) {
+      var form = TCC.find("." + modelObj.hasCondition + "ConditionsFORM");
+      var selectors = TCC.find("." + modelObj.hasCondition + "ConditionsFORM select");
+
+      selectors.each(function(obj, idx) {        
+        conditionSTR += TCC.find(obj).attr("alt") + ":" + ccGetSelectedOption(obj).text + "\n";
+      });
+
+    }
+    return conditionSTR;
+
+  }
+</SCRIPT>

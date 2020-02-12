@@ -1,0 +1,57 @@
+<!--fw type=class name=datafeed.page.ListDataFeedPage fw-->
+<html>
+<head>
+<META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=UTF-8'>
+
+<script src="js/ccSelect.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/tool/fileupload/ttmMfud.js"></script>
+<fw:template name="NavBackground" path="report" isInline="true" />
+<fw:template name="constants-js" path="report" isInline="true" />
+<fw:template name="css-l" path="report" isInline="true" />
+</head>
+<body>
+
+  <form name="form">
+    <button type="button" name="n" onclick="postRequest('');">刷新</button>
+    <!-- button type="button" name="n" onclick="postRequest('&cmd=clearAllData');">清空所有数据</button> -->
+
+
+    <div id="tasksDIV"></div>
+  </form>
+  <script>
+      var uploadIntoSelecttype = "";
+      function mfudCallback(ppfx, filenames) {
+        postRequest("&cmd=doUploadFeedFile&type=" + uploadIntoSelecttype + "&key=" + ppfx);
+        uploadIntoSelecttype = "";
+      }
+      function doUploadFile(selecttype) {
+
+        showMultiFileUploadDialog("`mfudppfx`");
+        uploadIntoSelecttype = selecttype;
+      }
+      function doFeedByType(selecttype) {
+
+        postRequest("&cmd=doFeedByType&type=" + selecttype);
+
+      }
+      function doFeedByFile(type, filename) {
+        postRequest("&cmd=doFeedByFile&type=" + type + "&filename=" + filename);
+      }
+      function postRequest(param) {
+        var url = "/ePage?pg=ListDataFeed-Data" + param;
+        var call = function(response) {
+          TCC.find("#tasksDIV").html(response);
+        }
+        TCC.post(url, null, true, call, "html");
+      }
+
+      function reload() {
+        postRequest('');
+        setTimeout(function() {
+          reload();
+        }, 20000);
+      }
+      reload();
+    </script>
+</body>
+</html>
