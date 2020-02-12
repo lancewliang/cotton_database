@@ -48,9 +48,9 @@ public class GetCNCottonProduction implements DayAnt {
     SetENVUtil.setENV();
     GetCNCottonProduction mhhf = new GetCNCottonProduction();
     try {
-      String ssss = "ffdsfsdf½«2013ÄêÈ«¹úÃŞ»¨²úÁ¿µ÷ÔöÖÁ699.7Íò¶Öasdfsadf";
+      String ssss = "ffdsfsdfå°†2013å¹´å…¨å›½æ£‰èŠ±äº§é‡è°ƒå¢è‡³699.7ä¸‡å¨asdfsadf";
       // Pattern p =
-      // Pattern.compile("[0-9]{4}Äê[^/t/n/x0B/f/r]*²úÁ¿[^/t/n/x0B/f/r]*ÖÁ[0-9]+(.[0-9]{1,2})?Íò¶Ö");
+      // Pattern.compile("[0-9]{4}å¹´[^/t/n/x0B/f/r]*äº§é‡[^/t/n/x0B/f/r]*è‡³[0-9]+(.[0-9]{1,2})?ä¸‡å¨");
       // Matcher m = p.matcher(ssss);
       // String datastr = null;
       // if (m.find()) {
@@ -78,7 +78,7 @@ public class GetCNCottonProduction implements DayAnt {
       attrs.add(new String[] { "target", "_blank" });
       attrs.add(new String[] { "class", "list1" });
       Country country = Country.getCountry("CHN");
-      Commodity commodity = Commodity.getCommodity("ÃŞ»¨");
+      Commodity commodity = Commodity.getCommodity("æ£‰èŠ±");
 
       long lastDay = YieldDaySQL.getLastDay(commodity, country, getSource());
       long lastDay2 = GrowAreaYearSQL.getLastDay(commodity, country, getSource());
@@ -93,7 +93,7 @@ public class GetCNCottonProduction implements DayAnt {
       for (Tag a : ass) {
         String title = a.toPlainTextString();
         String href = a.getAttribute("href");
-        if (title.indexOf("ÒâÏòÖÖÖ²Ãæ»ı") != -1 || title.indexOf("²úÁ¿µ÷²é") != -1 || title.indexOf("ÒâÏòÖ²ÃŞÃæ»ı") != -1 || title.indexOf("Êµ²¥ÖÖÖ²Ãæ»ı") != -1 || title.indexOf("È«¹úÃŞ»¨Êµ²¥Ãæ»ı") != -1 || title.indexOf("³¤ÊÆµ÷²é") != -1) {
+        if (title.indexOf("æ„å‘ç§æ¤é¢ç§¯") != -1 || title.indexOf("äº§é‡è°ƒæŸ¥") != -1 || title.indexOf("æ„å‘æ¤æ£‰é¢ç§¯") != -1 || title.indexOf("å®æ’­ç§æ¤é¢ç§¯") != -1 || title.indexOf("å…¨å›½æ£‰èŠ±å®æ’­é¢ç§¯") != -1 || title.indexOf("é•¿åŠ¿è°ƒæŸ¥") != -1) {
           String surl = href;
           parseURL(lastDay, surl, title);
         }
@@ -158,20 +158,20 @@ public class GetCNCottonProduction implements DayAnt {
             String oldpdfcontent = contentstring;
             contentstring = contentstring.replaceAll("\r\n", "");
             contentstring = contentstring.replaceAll(" ", "");
-            if (filename.indexOf("²úÁ¿µ÷²é") != -1) {
+            if (filename.indexOf("äº§é‡è°ƒæŸ¥") != -1) {
               parse1(f, contentstring);
-            } else if (filename.indexOf("ÒâÏò") != -1) {
+            } else if (filename.indexOf("æ„å‘") != -1) {
               parse2(f, contentstring);
-            } else if (filename.indexOf("Êµ²¥") != -1) {
+            } else if (filename.indexOf("å®æ’­") != -1) {
               parse3(f, contentstring);
-            } else if (filename.indexOf("³¤ÊÆµ÷²é") != -1) {
+            } else if (filename.indexOf("é•¿åŠ¿è°ƒæŸ¥") != -1) {
               parse4(f, contentstring);
             } else {
               LogService.err("contentstring not found:" + filename);
 
             }
             LogService.msg(filename);
-            if ( oldpdfcontent.indexOf("µ÷²é±í") != -1) {
+            if ( oldpdfcontent.indexOf("è°ƒæŸ¥è¡¨") != -1) {
               BufferedReader br = null;
               String line = "";
 
@@ -182,7 +182,7 @@ public class GetCNCottonProduction implements DayAnt {
 
                 while ((line = br.readLine()) != null) {
                   line = HTMLParseUtil.trim2bank(line.trim());
-                  if (line.startsWith("È« ¹ú")) {
+                  if (line.startsWith("å…¨ å›½")) {
                     String[] ll = line.split(" ");
                     double totalyield = 0;
                     try{
@@ -226,18 +226,18 @@ public class GetCNCottonProduction implements DayAnt {
     }
   }
 
-  // ²úÁ¿µ÷²é
+  // äº§é‡è°ƒæŸ¥
   private void parse1(File f, String content) {
     try {
       long reportDate = getReportDate(f);
       String year = getYear(f, content);
-      double totalarea = HTMLParseUtil.getDoubleStringByRegex(content, "Ãæ»ı[0-9]+(.[0-9]{1,2})?ÍòÄ¶", "Ãæ»ı".length(), "ÍòÄ¶".length());
+      double totalarea = HTMLParseUtil.getDoubleStringByRegex(content, "é¢ç§¯[0-9]+(.[0-9]{1,2})?ä¸‡äº©", "é¢ç§¯".length(), "ä¸‡äº©".length());
       if (totalarea <= 0) {
-        totalarea = HTMLParseUtil.getDoubleStringByRegex(content, "ÖÖÖ²Ãæ»ıÎª[0-9]+(.[0-9]{1,2})?ÍòÄ¶", "ÖÖÖ²Ãæ»ıÎª".length(), "ÍòÄ¶".length());
+        totalarea = HTMLParseUtil.getDoubleStringByRegex(content, "ç§æ¤é¢ç§¯ä¸º[0-9]+(.[0-9]{1,2})?ä¸‡äº©", "ç§æ¤é¢ç§¯ä¸º".length(), "ä¸‡äº©".length());
       }
-      double totalyield = HTMLParseUtil.getDoubleStringByRegex(content, "×Ü²úÁ¿[0-9]+(.[0-9]{1,2})?Íò¶Ö", "×Ü²úÁ¿".length(), "Íò¶Ö".length());
+      double totalyield = HTMLParseUtil.getDoubleStringByRegex(content, "æ€»äº§é‡[0-9]+(.[0-9]{1,2})?ä¸‡å¨", "æ€»äº§é‡".length(), "ä¸‡å¨".length());
       if (totalyield <= 0) {
-        totalyield = HTMLParseUtil.getDoubleStringByRegex(content, "×Ü²úÁ¿Ô¤¼ÆÎª[0-9]+(.[0-9]{1,2})?Íò¶Ö", "×Ü²úÁ¿Ô¤¼ÆÎª".length(), "Íò¶Ö".length());
+        totalyield = HTMLParseUtil.getDoubleStringByRegex(content, "æ€»äº§é‡é¢„è®¡ä¸º[0-9]+(.[0-9]{1,2})?ä¸‡å¨", "æ€»äº§é‡é¢„è®¡ä¸º".length(), "ä¸‡å¨".length());
       }
       if (totalarea <= 0) {
         LogService.err("parse1 totalarea  not found:" + f.getAbsolutePath());
@@ -255,25 +255,25 @@ public class GetCNCottonProduction implements DayAnt {
     }
   }
 
-  // ÒâÏòÖÖÖ²Ãæ»ıµ÷²é
+  // æ„å‘ç§æ¤é¢ç§¯è°ƒæŸ¥
   private void parse2(File f, String content) {
     try {
       long reportDate = getReportDate(f);
       String year = getYear(f, content);
-      double totalarea = HTMLParseUtil.getDoubleStringByRegex(content, "ÒâÏòÖÖÖ²Ãæ»ı[0-9]+(.[0-9]{1,2})?ÍòÄ¶", "ÒâÏòÖÖÖ²Ãæ»ı".length(), "ÍòÄ¶".length());
+      double totalarea = HTMLParseUtil.getDoubleStringByRegex(content, "æ„å‘ç§æ¤é¢ç§¯[0-9]+(.[0-9]{1,2})?ä¸‡äº©", "æ„å‘ç§æ¤é¢ç§¯".length(), "ä¸‡äº©".length());
       if (totalarea <= 0) {
         LogService.err("parse2 totalarea not found:" + f.getAbsolutePath());
       } else {
         saveGrowAreaYear(year, reportDate, totalarea, ReportStatus.HOPE);
       }
-      Pattern p = Pattern.compile("[0-9]{4}Äê[^/t/n/x0B/f/r]*²úÁ¿[^/t/n/x0B/f/r]*ÖÁ[0-9]+(.[0-9]{1,2})?Íò¶Ö");
+      Pattern p = Pattern.compile("[0-9]{4}å¹´[^/t/n/x0B/f/r]*äº§é‡[^/t/n/x0B/f/r]*è‡³[0-9]+(.[0-9]{1,2})?ä¸‡å¨");
       Matcher m = p.matcher(content);
       String datastr = null;
       if (m.find()) {
         datastr = m.group();
         if (None.isNonBlank(datastr)) {
           String year2 = datastr.substring(0, 4);
-          int i = datastr.indexOf('ÖÁ');
+          int i = datastr.indexOf('è‡³');
           double totalyield = Double.parseDouble(datastr.substring(i + 1, datastr.length() - 2));
 
           if (totalyield < 0) {
@@ -290,13 +290,13 @@ public class GetCNCottonProduction implements DayAnt {
     }
   }
 
-  // Êµ²¥Ãæ»ıµ÷²é
+  // å®æ’­é¢ç§¯è°ƒæŸ¥
 
   private void parse3(File f, String content) {
     try {
       long reportDate = getReportDate(f);
       String year = getYear(f, content);
-      double totalarea = HTMLParseUtil.getDoubleStringByRegex(content, "Êµ²¥Ãæ»ı[0-9]+(.[0-9]{1,2})?ÍòÄ¶", "Êµ²¥Ãæ»ı".length(), "ÍòÄ¶".length());
+      double totalarea = HTMLParseUtil.getDoubleStringByRegex(content, "å®æ’­é¢ç§¯[0-9]+(.[0-9]{1,2})?ä¸‡äº©", "å®æ’­é¢ç§¯".length(), "ä¸‡äº©".length());
       if (totalarea <= 0) {
         LogService.err("parse3 totalarea not found:" + f.getAbsolutePath());
       } else {
@@ -307,17 +307,17 @@ public class GetCNCottonProduction implements DayAnt {
     }
   }
 
-  // ³¤ÊÆµ÷²é
+  // é•¿åŠ¿è°ƒæŸ¥
   private void parse4(File f, String content) {
     try {
       long reportDate = getReportDate(f);
       String year = getYear(f, content);
-      double totalyield = HTMLParseUtil.getDoubleStringByRegex(content, "ÃŞ»¨×Ü²úÁ¿Ô¤¼Æ[0-9]+(.[0-9]{1,2})?Íò¶Ö", "ÃŞ»¨×Ü²úÁ¿Ô¤¼Æ".length(), "Íò¶Ö".length());
+      double totalyield = HTMLParseUtil.getDoubleStringByRegex(content, "æ£‰èŠ±æ€»äº§é‡é¢„è®¡[0-9]+(.[0-9]{1,2})?ä¸‡å¨", "æ£‰èŠ±æ€»äº§é‡é¢„è®¡".length(), "ä¸‡å¨".length());
       if (totalyield <= 0) {
-        totalyield = HTMLParseUtil.getDoubleStringByRegex(content, "ÃŞ»¨×Ü²úÁ¿Ô¤¼ÆÎª[0-9]+(.[0-9]{1,2})?Íò¶Ö", "ÃŞ»¨×Ü²úÁ¿Ô¤¼ÆÎª".length(), "Íò¶Ö".length());
+        totalyield = HTMLParseUtil.getDoubleStringByRegex(content, "æ£‰èŠ±æ€»äº§é‡é¢„è®¡ä¸º[0-9]+(.[0-9]{1,2})?ä¸‡å¨", "æ£‰èŠ±æ€»äº§é‡é¢„è®¡ä¸º".length(), "ä¸‡å¨".length());
       }
       if (totalyield <= 0) {
-        totalyield = HTMLParseUtil.getDoubleStringByRegex(content, "×Ü²úÁ¿[0-9]+(.[0-9]{1,2})?Íò¶Ö", "×Ü²úÁ¿".length(), "Íò¶Ö".length());
+        totalyield = HTMLParseUtil.getDoubleStringByRegex(content, "æ€»äº§é‡[0-9]+(.[0-9]{1,2})?ä¸‡å¨", "æ€»äº§é‡".length(), "ä¸‡å¨".length());
       }
 
       if (totalyield <= 0) {
@@ -334,7 +334,7 @@ public class GetCNCottonProduction implements DayAnt {
 
     Date now = new Date();
     Country country = Country.getCountry("CHN");
-    Commodity commodity = Commodity.getCommodity("ÃŞ»¨");
+    Commodity commodity = Commodity.getCommodity("æ£‰èŠ±");
     YieldYear obj = YieldYearSQL.getObj(year, reportDate, country, status, commodity, getSource());
     if (obj == null) {
       obj = new YieldYear();
@@ -346,7 +346,7 @@ public class GetCNCottonProduction implements DayAnt {
       obj.setReportStatus(status);
     }
     obj.setValue(value);
-    obj.setWeightUnit(WeightUnit.getWeightUnit("Íò¶Ö"));
+    obj.setWeightUnit(WeightUnit.getWeightUnit("ä¸‡å¨"));
     obj.setUpdatedAt(now);
     obj.setUpdatedBy(AntManger.UPDATEBY);
     YieldYearSQL.save(obj);
@@ -356,7 +356,7 @@ public class GetCNCottonProduction implements DayAnt {
 
     Date now = new Date();
     Country country = Country.getCountry("CHN");
-    Commodity commodity = Commodity.getCommodity("ÃŞ»¨");
+    Commodity commodity = Commodity.getCommodity("æ£‰èŠ±");
     GrowAreaYear obj = GrowAreaYearSQL.getObj(year, reportDate, country, status, commodity, getSource());
     if (obj == null) {
       obj = new GrowAreaYear();
@@ -368,7 +368,7 @@ public class GetCNCottonProduction implements DayAnt {
       obj.setReportStatus(status);
     }
     obj.setValue(value);
-    obj.setAreaUnit(AreaUnit.getAreaUnit("ÍòÄ¶"));
+    obj.setAreaUnit(AreaUnit.getAreaUnit("ä¸‡äº©"));
     obj.setUpdatedAt(now);
     obj.setUpdatedBy(AntManger.UPDATEBY);
     GrowAreaYearSQL.save(obj);
@@ -386,15 +386,15 @@ public class GetCNCottonProduction implements DayAnt {
   private String getYear(File f, String content) throws Exception {
 
     double year = 0;
-    year = HTMLParseUtil.getDoubleStringByRegex(f.getName(), "[0-9]+Äê¶ÈÈ«¹úÃŞ»¨", 0, "Äê¶ÈÈ«¹úÃŞ»¨".length());
+    year = HTMLParseUtil.getDoubleStringByRegex(f.getName(), "[0-9]+å¹´åº¦å…¨å›½æ£‰èŠ±", 0, "å¹´åº¦å…¨å›½æ£‰èŠ±".length());
     if (year <= 0) {
-      year = HTMLParseUtil.getDoubleStringByRegex(f.getName(), "[0-9]+ÄêÈ«¹úÃŞ»¨", 0, "ÄêÈ«¹úÃŞ»¨".length());
+      year = HTMLParseUtil.getDoubleStringByRegex(f.getName(), "[0-9]+å¹´å…¨å›½æ£‰èŠ±", 0, "å¹´å…¨å›½æ£‰èŠ±".length());
     }
     if (year <= 0) {
-      year = HTMLParseUtil.getDoubleStringByRegex(content, "[0-9]+Äê¶ÈÈ«¹úÃŞ»¨", 0, "Äê¶ÈÈ«¹úÃŞ»¨".length());
+      year = HTMLParseUtil.getDoubleStringByRegex(content, "[0-9]+å¹´åº¦å…¨å›½æ£‰èŠ±", 0, "å¹´åº¦å…¨å›½æ£‰èŠ±".length());
     }
     if (year <= 0) {
-      year = HTMLParseUtil.getDoubleStringByRegex(content, "[0-9]+ÄêÈ«¹úÃŞ»¨", 0, "ÄêÈ«¹úÃŞ»¨".length());
+      year = HTMLParseUtil.getDoubleStringByRegex(content, "[0-9]+å¹´å…¨å›½æ£‰èŠ±", 0, "å¹´å…¨å›½æ£‰èŠ±".length());
     }
     if (year <= 0) {
       LogService.err("getYear year <= 0 not found:" + f.getAbsolutePath());
