@@ -366,7 +366,7 @@ public class GetCNCottonProduction implements DayAnt {
       obj.setSource(getSource());
       obj.setYear(year);
       obj.setReportStatus(status);
-    }
+    } 
     obj.setValue(value);
     obj.setAreaUnit(AreaUnit.getAreaUnit("万亩"));
     obj.setUpdatedAt(now);
